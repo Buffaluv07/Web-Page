@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomorrowland Countdown</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Countdown.css">
+    <link rel="stylesheet" href="Nav.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="../Index.html">Home</a>
+    </div>
+    <div class="countdown-container">
+        <h1>Countdown to Tomorrowland</h1>
+        <div id="countdown"></div>
+    </div>
+<p>Tomorrowland starts on July 19, 2025</p>
+<button onclick="doStart()">Start Countdown</button>
+
+    <script>
+        const countdownElement = document.getElementById('countdown');
+        const eventDate = new Date('2025-07-19T00:00:00').getTime();
+
+        let countdownInterval;
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = 'The event has started!';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function doStart() {
+            clearInterval(countdownInterval);
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+    </script>
+</html>    </script>
+</body>
