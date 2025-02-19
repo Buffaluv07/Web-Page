@@ -1,20 +1,17 @@
 
 import { defineConfig } from 'vite'
-import resolve from 'path'
+import { resolve } from 'path'
 
-
-export default defineConfig({ 
-    build: {
-        run: true,
-        preview: true,  
+export default defineConfig({
+    build: { 
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                nested1: resolve(__dirname, 'Timer/index.html'),
-                nested2: resolve(__dirname, 'Lineup/index.html'),
-                nested3: resolve(__dirname, 'Location/index.html')
-                nested4: resolve(__dirname, 'Tickets/index.html'),
+                countdown: resolve(__dirname, 'countdown/index.html'),
+                lineup: resolve(__dirname, 'lineup/index.html'),
+                location: resolve(__dirname, 'location/index.html'),
+
             }
-        }               
+        }
     }
-})
+});
