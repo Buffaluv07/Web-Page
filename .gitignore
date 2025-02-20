@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+# filepath: /Users/zoekornhauser/Documents/GitHub/Webpage/Web-Page/.gitignore
+# dist/
 *.local
 
 # Editor directories and files
