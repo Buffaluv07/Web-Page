@@ -12,6 +12,7 @@ export default defineConfig({
                 countdown: resolve(__dirname, 'countdown/index.html'),
                 lineup: resolve(__dirname, 'lineup/index.html'),
                 location: resolve(__dirname, 'location/index.html'),
+                projects : resolve(__dirname, 'projects/index.html'),
 
             }
         }
