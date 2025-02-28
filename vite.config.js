@@ -5,7 +5,7 @@ import { resolve } from 'path'
 export default defineConfig({
     base: "/Web-Project/",
     build: { 
-        outDir: 'dist',
+        outDir: "docs",
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
