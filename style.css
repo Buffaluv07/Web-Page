@@ -1,10 +1,9 @@
 body { 
-    background-color: #f0f0f2;
     margin: 0;
     padding: 0;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center ;
-    background-color: #fbfafd;
+    background: linear-gradient(#c9d1ef, #a0c7f5);
     border-top: #2846d8 5px solid;
     color: #333;
     border-bottom: #2846d8 5px solid;
