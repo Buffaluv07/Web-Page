@@ -29,7 +29,8 @@ h2 {
     padding: 10px;
     font-size: 20px;
     font-weight: 300;
-    color: #21b5eb;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
 }
 h3 {
     margin: 0;
