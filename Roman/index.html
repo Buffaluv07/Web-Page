@@ -27,5 +27,41 @@
     </fieldset>
 
     <script src="./script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#convert-btn').click(function() {
+                const number = $('#number').val();
+                const romanNumeral = convertToRoman(number);
+                $('#output').text(romanNumeral);
+            });
+
+            function convertToRoman(num) {
+                if (num < 1 || num > 3999) return 'Invalid number';
+                const romanNumerals = [
+                    ['M', 1000],
+                    ['CM', 900],
+                    ['D', 500],
+                    ['CD', 400],
+                    ['C', 100],
+                    ['XC', 90],
+                    ['L', 50],
+                    ['XL', 40],
+                    ['X', 10],
+                    ['IX', 9],
+                    ['V', 5],
+                    ['IV', 4],
+                    ['I', 1]
+                ];
+                let result = '';
+                for (const [roman, value] of romanNumerals) {
+                    while (num >= value) {
+                        result += roman;
+                        num -= value;
+                    }
+                }
+                return result;
+            }
+        });
+    </script>
 </body>
 </html>
