@@ -1,4 +1,3 @@
-console.log("hi");
 
 function checkPalindrome() {
   const inputText = document.getElementById("text-input").value;
