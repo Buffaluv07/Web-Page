@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Palindrome Checker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>About My Palindrome:</h2>
-   <h3><p>Input a word, symbol, etc. My device will tell you whether it is a Palindrome. If you didn't know what that was. It can be read forwards AND backwards. Example would be "race car".</p></h3>
-    <input id="text-input"> 
+    <div class="headline-container">
+        <h2>About My Palindrome:</h2>
+    </div>
+    <p class="subheading">
+        Input a word, symbol, etc. My device will tell you whether it is a Palindrome. If you didn't know what that was, it can be read forwards AND backwards. An example would be "race car".
+    </p>
+    <input id="text-input" type="text" placeholder="Enter text here">
     <button id="check-btn" onclick="checkPalindrome()">Check Palindrome</button>
     <div id="result"></div>
-    <script src="./script.js"></script>
     <h4>With help by YouTube ©</h4>
+    <fieldset class="nav">
+        <legend>Navigation</legend>
+        <h5><a href="../index.html">Home</a><br>
+        <a href="../Location/index.html">Projects Page</a></h5>
+    </fieldset>
+    <script src="./script.js"></script>
 </body>
 </html>

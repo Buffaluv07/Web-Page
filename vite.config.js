@@ -15,6 +15,9 @@ export default defineConfig({
                 projects : resolve(__dirname, 'projects/index.html'),
                 skyline: resolve(__dirname, 'skyline/index.html'),
                 FerrisWheel: resolve(__dirname, 'FerrisWheel/index.html'),
+                Roman: resolve(__dirname, 'Roman/index.html'),
+                Cat: resolve(__dirname, 'Cat/index.html'),
+                RockPaper: resolve(__dirname, 'RockPaper/index.html'),
             }
         }
     }
