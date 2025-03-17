@@ -15,7 +15,7 @@
         Input a word, symbol, etc. My device will tell you whether it is a Palindrome. If you didn't know what that was, it can be read forwards AND backwards. An example would be "race car".
     </p>
     <input id="text-input" type="text" placeholder="Enter text here">
-    <button id="check-btn" onclick="checkPalindrome()">Check Palindrome</button>
+    <button id="check-btn">Check Palindrome</button>
     <div id="result"></div>
     <h4>With help by YouTube ©</h4>
     <fieldset class="nav">
@@ -23,6 +23,9 @@
         <h5><a href="../index.html">Home</a><br>
         <a href="../Location/index.html">Projects Page</a></h5>
     </fieldset>
-    <script src="./script.js" type="module"></script>
+    <script type="module">
+        import { checkPalindrome } from './script.js';
+        document.getElementById('check-btn').addEventListener('click', checkPalindrome);
+    </script>
 </body>
 </html>

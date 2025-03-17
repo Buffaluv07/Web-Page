@@ -1,5 +1,4 @@
-
-function checkPalindrome() {
+export function checkPalindrome() {
   const inputText = document.getElementById("text-input").value;
   if (!inputText) {
     alert("Please input a value");
