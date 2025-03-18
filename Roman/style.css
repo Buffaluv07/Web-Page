@@ -1,4 +1,4 @@
-@import url('common.css');
+
 
 body { 
     font-family: 'Merriweather', serif; 
@@ -12,7 +12,7 @@ body {
   }
 
 h1 {
-    font-weight: 400;
+    font-weight: 600;
     font-family: 'Merriweather', serif; 
 }
 
@@ -22,18 +22,19 @@ button:hover {
 
 #output {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 40px;
     color: #050505;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #e0c48c;
+    background-color: #8c92e0;
     color: rgb(244, 247, 249);
     border: inherit;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 19px;
+    font-family: 'Arial', sans-serif;
 }
 
 h2 {

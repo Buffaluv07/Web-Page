@@ -7,6 +7,7 @@ body {
     text-align: center;
     height: 100vh;
     margin: 0;
+  
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,11 +18,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 8em; 
+    font-size: 10em; 
 }
 
 h2 {
-    font-size: 3em; 
+    font-size: 4em; 
+    font-weight: 600;
 }
 
 button:hover {
