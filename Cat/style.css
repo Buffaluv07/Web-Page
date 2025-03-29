@@ -211,3 +211,11 @@
     left: 109px;
      transform: rotate(3deg);
   }
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+    
+  }

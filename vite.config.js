@@ -18,6 +18,7 @@ export default defineConfig({
                 Roman: resolve(__dirname, 'Roman/index.html'),
                 Cat: resolve(__dirname, 'Cat/index.html'),
                 RockPaper: resolve(__dirname, 'RockPaper/index.html'),
+                ToDoApp: resolve(__dirname, 'ToDo-App/index.html'),
             }
         }
     }

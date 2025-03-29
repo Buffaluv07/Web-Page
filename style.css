@@ -29,7 +29,7 @@ h1 {
 }
 
 .headline-1 {
-  font-size: 8em;
+  font-size: 9em;
   color: #2c3e50;
 }
 
@@ -40,12 +40,15 @@ h1 {
 
 .subheading {
   color: #7f8c8d;
-  font-size: 1.10em;
+  font-size: 1.3em;
   max-width: 25em;
-  margin: 20px auto;
-  text-align: right;
+  margin: 300px 0; /* Remove auto centering */
+  text-align: right; /* Align text to the right */
   padding-bottom: 1.0em;
   font-family: 'Georgia', serif;
+  position: absolute; /* Position it absolutely */
+  top: 150px; /* Adjust the vertical position */
+  right: 20px; /* Align it to the right edge of the screen */
 }
 
 h3 {
@@ -78,21 +81,59 @@ nav a:hover, h4 a:hover {
   color: #5550d7;
   text-shadow: 0 0 0.5em #7ca1e2;
 }
-
-fieldset.nav {
-  border: 1px solid #2980b9;
+nav-bar {
+  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin: 20px auto;
-  max-width: 300px;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+.nav-bar {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px auto; /* Add margin to position it under the h2 */
+  max-width: 400px; /* Reduce the width for a smaller bar */
+  background-color: #f9f9f9;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a professional look */
 }
 
-legend {
-  font-size: 1.2em;
+/* Legend styling */
+.nav-bar legend {
+  font-size: 1em; /* Make the legend smaller */
   font-weight: bold;
   color: #2980b9;
+  padding: 0 5px;
+  text-align: center;
 }
 
+/* Navigation links styling */
+.nav-links {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 10px; /* Add spacing between buttons */
+  margin-top: 10px;
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 8px 15px; /* Reduce padding for smaller buttons */
+  background-color: #2980b9;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 0.9em; /* Slightly smaller font size */
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #3498db;
+  color: #fff;
+}
 h5 {
   font-size: 1.5em;
   color: #2980b9;

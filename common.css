@@ -1,5 +1,5 @@
 body { 
-    font-family: 'Arial', sans-serif;
+    font-family: Merriweather, serif;
     font-size: 16px;
     line-height: 1.5;
     background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
@@ -55,38 +55,21 @@ body {
     font-weight: 300;
     color: #2980b9;
   }
-  
-  nav a, h4 a {
-    display: inline-block;
-    color: #343232;
-    text-decoration: none;
-    border: 0.08em solid #2980b9;
-    padding: 0.7em 2em;
-    text-transform: uppercase;
-    font-family: 'Merriweather', serif; 
-    font-size: 0.9em;
-    letter-spacing: 0.1em;
-    background: #dde4e9;
-    border-radius: 5px;
-    margin: 10px;
-    transition: background 0.3s, color 0.3s;
+  nav {
+    position: fixed; /* Fix the navigation bar at the top */
+    top: 0; /* Align it to the top of the screen */
+    left: 0; /* Align it to the left of the screen */
+    width: 100%; /* Make it span the full width of the screen */
+    background-color: #f8f9fa; /* Light background color for the navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    z-index: 1000; /* Ensure it stays above other elements */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0; /* Add vertical padding for spacing */
+    gap: 20px; /* Space between navigation items */
+
   }
-  
-  nav a:hover, h4 a:hover {
-    text-decoration: none;
-    background: #85c1e9; 
-    color: #5550d7;
-    text-shadow: 0 0 0.5em #7ca1e2;
-  }
-  
-  fieldset.nav {
-    border: 1px solid #2980b9;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 20px auto;
-    max-width: 300px;
-  }
-  
   legend {
     font-size: 1.2em;
     font-weight: bold;

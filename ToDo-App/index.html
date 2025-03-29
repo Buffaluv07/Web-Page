@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>To Do List</title>
+</head>
+<body>
+    <h1 class="tasks-heading">
+        Your Tasks
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 900" width="1em" fill="#000000"><path d="m511-311 326-325-57-57-325 326 56 56ZM239-192q-91-3-141-40T48-333q0-63 50-101t139-44q35-2 55-12.5t20-26.5q0-27-27-40t-96-19l6-72q96 6 142.5 38.5T384-517q0 48-37 77t-105 34q-61 5-91.5 23T120-333q0 33 29 49.5t93 19.5l-3 72Zm287-32L368-383l367-366q19-19 45.5-19t45.5 19l67 67q19 19 19 45.5T893-591L526-224Zm-153 32q-17 4-29-8t-8-29l32-154 158 159-153 32Z"/>
+        </svg>
+    </h1>
+    <fieldset>
+            <div class="nav">
+                <a href="index.html">Tasks</a>
+                <a href="../index.html">Web-Page Home</a>
+            </div>
+    </fieldset>
+    <div class="wrapper">
+        <div class="task-bubble">
+            <form> 
+                <label for="todo-input"><strong>New Task:</strong></label>
+                <input id="todo-input" class="todo-input" type="text" placeholder="Enter a task">
+                <input type="date" id="task-date" placeholder="Add date (optional)">
+                <select id="task-category">
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                </select>
+                </select>
+                <button class="add-button" id="add-button">ADD</button>
+            </form>
+        </div>
+
+        <div class="incomplete-list" id="incomplete-container">
+            <h2>Incompleted Tasks:</h2>
+            <ul id="incompleted-list">
+               <!--
+<li class="todo-list">
+    <label class="custom-checkbox">
+        <input type="checkbox" id="task-1" name="task1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+    </label>
+    <label for="task-1" class="task-label">Task 1</label>
+    <button class="delete-button">
+        <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18M9 6v12m6-12v12M19 6l-1 14H6L5 6"></path>
+        </svg>
+    </button>
+</li>
+<li class="todo-list">
+    <label class="custom-checkbox">
+        <input type="checkbox" id="task-2" name="task2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 6L9 17l-5-5"></path>
+        </svg>
+    </label>
+    <label for="task-2" class="task-label">Task 2</label>
+    <button class="delete-button">
+        <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18M9 6v12m6-12v12M19 6l-1 14H6L5 6"></path>
+        </svg>
+    </button>
+</li>
+-->
+            </ul>
+        </div>
+        
+        
+        <div class="completed-list" id="completed-container">
+            <h2>Completed Tasks:</h2>
+            <ul id="completed-list"></ul>
+        </div>
+
+        </div>
+
+
+</div>
+<div class="music-player">
+    <audio id="audio-player" autoplay>
+        <source id="audio-source" src="../ToDo-App/music/03 Kayak For One.mp3" type="audio/mpeg">
+    </audio>
+    <div class="controls">
+        <button id="play-button">Play</button>
+        <button id="pause-button">Pause</button>
+        <button id="next-button">Next</button>
+        <button id="stop-button">Stop</button>
+    </div>
+    <div class="volume-control">
+        <label for="volume-slider">Volume:</label>
+        <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+    </div>
+    <div class="playlist">
+        <label for="song-select">Playlist:</label>
+        <select id="song-select">
+            <option value="music/03 Kayak For One.mp3" selected>Kayak for One</option>
+            <option value="music/04 Zero.mp3">Zero</option>
+            <option value="music/19 Three Musketeers.mp3">Three Musketeers</option>
+            <option value="music/File Select - The Legend of Zelda- Skyward Sword.mp3">Zelda File Select</option>
+            <option value="music/It's A Shame.mp3">It's a Shame</option>
+            <option value="music/Puff The Magic Dragon.mp3">Puff the Magic Dragon</option>
+            <option value="music/Zelda- Skyward Sword Music - Ballad of the Goddess.mp3">Zelda Skyward</option>
+            <option value="music/Zelda- Skyward Sword Music - Faron Woods.mp3">Faron Woods</option>
+            <option value="music/Zelda- Skyward Sword Music - Skyloft.mp3">Zelda Skyloft</option>
+
+        </select>
+    </div>
+</div>
+<div class="footer">
+    <p>Made with ❤️ by Zoe Kornhauser Music Player with help of AI.</p>
+    <p>© 2025</p>
+    <p>All rights reserved</p>
+</div>
+<script src="app.js"></script>
+</div>
+<script src="app.js" defer></script>
+      </body>
+    </html>
+</body>
+</html>

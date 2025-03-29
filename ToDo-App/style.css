@@ -1,0 +1,346 @@
+/* General Styles */
+body {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(255, 191, 0);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 5em;
+    margin-top: 50px;
+}
+
+.wrapper {
+    width: 700px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    gap: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav a {
+    text-decoration: none;
+    color: rgb(18, 12, 12);
+    background-color: rgb(236, 225, 154);
+    padding: 5px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Task Bubble */
+.task-bubble {
+    max-width: 600px;
+    font-size: 1.5em;
+    background-color: rgb(236, 235, 229);
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+/* Task Lists */
+.task-list,
+.incomplete-list,
+.notes,
+.completed-list {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Form Elements */
+.todo-input {
+    box-sizing: border-box;
+    padding: 15px 20px;
+    width: 100%;
+    background: white;
+    border: 2px solid var(--secondary-color);
+    border-radius: 1000px;
+    font: inherit;
+    color: #060606;
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 5px;
+    border-radius: 30px;
+    border: 1px solid var(--secondary-color);
+    background-color: rgb(218, 214, 208);
+    color: #060606;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+select.work {
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+    border: 2px solid brown;
+}
+
+
+select.personal {
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border: 2px solid blue;
+}
+
+.add-button {
+    background: none;
+    border: 2px solid  var(--secondary-color,#060504);
+    cursor: pointer;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: .7em;
+    color: black;
+    font-weight: bold;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: rgba(69, 71, 69, 0.1);
+}
+
+/* Task Items */
+.todo-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.todo-list:last-child {
+    border-bottom: none;
+}
+
+.task-label {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+
+.custom-checkbox {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent-color, #b87124);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+
+.custom-checkbox svg {
+    width: 16px;
+    height: 16px;
+    stroke: #f7f7f4;
+    stroke-opacity: 0; 
+    transition: stroke-opacity 0.3s ease, stroke 0.3s ease;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + svg {
+    stroke-opacity: 1; 
+    stroke: #000000; 
+}
+
+.custom-checkbox:hover {
+    border-color: #e49918; 
+}
+
+
+input[type="checkbox"]:checked ~ .task-label {
+    text-decoration: line-through;
+    color: var( #0e0808); 
+}
+
+.custom-checkbox:hover {
+    border-color: #e49918;
+}
+
+.task-label.work {
+    font-weight: bold;
+    color: brown;
+    font-size:larger
+}
+
+
+.task-label.personal {
+    font-weight: bold;
+    font-size:larger;
+    color: blue;
+}
+
+#task-category.work {
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+}
+
+
+#task-category.personal {
+    background-color: blue;
+    color: rgb(149, 31, 31);
+    font-weight: bold;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.delete-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #f50808;
+    transition: stroke 0.3s ease;
+}
+
+.delete-button:hover .delete-icon {
+    stroke: #d00000;
+}
+
+.music-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    margin: 20px auto;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff9500;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.volume-control {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#volume-slider {
+    width: 150px;
+    cursor: pointer;
+}
+
+#song-select {
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer;
+}
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .wrapper {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 12pt;
+        margin-top: 50px;
+    }
+
+    .nav a {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+
+    .task-bubble,
+    .task-list,
+    .incomplete-list,
+    .overdue-list,
+    .completed-list {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .todo-input {
+        font-size: 0.9em;
+    }
+
+    .add-button {
+        font-size: 0.8em;
+        padding: 8px 15px;
+        width: 100%;
+        margin-top: 10px;
+    }
+}

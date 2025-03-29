@@ -56,3 +56,12 @@ button:hover {
     font-weight: bold;
     color: #2b29aa; /* Optional: Change the color of the countdown numbers */
 }
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 20px;
+    
+  }
