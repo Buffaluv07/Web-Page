@@ -244,3 +244,17 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSongIndex = options.findIndex(option => option.value === audioSource.src);
     }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const audioPlayer = document.getElementById("audio-player");
+    const songSelect = document.getElementById("song-select");
+
+    // Play selected song
+    songSelect.addEventListener("change", (event) => {
+        const selectedSong = event.target.value;
+        audioPlayer.src = selectedSong;
+        audioPlayer.load();
+        audioPlayer.play().catch((error) => {
+            console.error("Error playing audio:", error);
+        });
+    });
+});
