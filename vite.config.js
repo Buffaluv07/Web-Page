@@ -1,18 +1,17 @@
-
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-    base: "/Web-Page/",
+    base: "/Web-Page/", // Adjust this if deploying to a different base path
     build: { 
-        outDir: "docs",
+        outDir: "docs", // Output directory for GitHub Pages
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
                 countdown: resolve(__dirname, 'countdown/index.html'),
                 lineup: resolve(__dirname, 'lineup/index.html'),
                 location: resolve(__dirname, 'location/index.html'),
-                projects : resolve(__dirname, 'projects/index.html'),
+                projects: resolve(__dirname, 'projects/index.html'),
                 skyline: resolve(__dirname, 'skyline/index.html'),
                 FerrisWheel: resolve(__dirname, 'FerrisWheel/index.html'),
                 Roman: resolve(__dirname, 'Roman/index.html'),
