@@ -2,9 +2,9 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
 export default defineConfig({
-    base: "/Web-Page/", // Adjust this if deploying to a different base path
+    base: "/Web-Page/",
     build: { 
-        outDir: "docs", // Output directory for GitHub Pages
+        outDir: "docs", 
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
@@ -19,6 +19,6 @@ export default defineConfig({
                 RockPaper: resolve(__dirname, 'RockPaper/index.html'),
                 ToDoApp: resolve(__dirname, 'ToDo-App/index.html'),
             }
-        }
+        },
     }
 });
