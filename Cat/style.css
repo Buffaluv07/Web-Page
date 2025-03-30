@@ -217,5 +217,22 @@
     align-items: center;
     margin-top: 20px;
     gap: 20px;
-    
+
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 700px;
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  .headline-container {
+    text-align: right;
+    margin-top: 50px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }

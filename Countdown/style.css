@@ -65,3 +65,14 @@ nav {
     gap: 20px;
     
   }
+
+  .footer {
+    font-family: 'Merriweather', serif;
+    font-size: 0.8em;
+    color: #777;
+    text-align: center;
+    padding: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }

@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <fieldset class="nav">
+        <legend>Navigation</legend>
+        <a href="../index.html">Home</a><br>
+        <a href="../Location/index.html">Projects Page</a>
+    </fieldset>
+
     <div class="headline-container">
         <h2>My Palindrome:</h2>
     </div>
@@ -17,15 +23,17 @@
     <input id="text-input" type="text" placeholder="Enter text here">
     <button id="check-btn">Check Palindrome</button>
     <div id="result"></div>
-    <h4>With help by YouTube ©</h4>
-    <fieldset class="nav">
-        <legend>Navigation</legend>
-        <h5><a href="../index.html">Home</a><br>
-        <a href="../Location/index.html">Projects Page</a></h5>
-    </fieldset>
     <script type="module">
         import { checkPalindrome } from './script.js';
         document.getElementById('check-btn').addEventListener('click', checkPalindrome);
     </script>
+
+
+
+<div class="footer">
+    <p>Made by Zoe Kornhauser with help from FreeCodeCamp & YouTube</p>
+    <p>© 2025</p>
+    <p>All rights reserved</p>
+</div>
 </body>
 </html>

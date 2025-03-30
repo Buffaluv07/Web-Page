@@ -110,7 +110,19 @@ select.personal {
     font-weight: bold;
     border: 2px solid blue;
 }
+.todo-list.personal .task-label {
+    color: blue;
+    font-weight: bold;
+}
 
+.todo-list.work .task-label {
+    color: brown;
+    font-weight: bold;
+}
+.todo-list.personal .task-label {
+    color: blue;
+    font-weight: bold;
+}
 .add-button {
     background: none;
     border: 2px solid  var(--secondary-color,#060504);
@@ -123,6 +135,7 @@ select.personal {
     width: auto;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 
 .add-button:hover {
     background-color: rgba(69, 71, 69, 0.1);
@@ -245,61 +258,6 @@ input[type="checkbox"]:checked ~ .task-label {
     stroke: #d00000;
 }
 
-.music-player {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin: 20px auto;
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ff9500;
-    color: white;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.volume-control {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#volume-slider {
-    width: 150px;
-    cursor: pointer;
-}
-
-#song-select {
-    margin-top: 20px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    cursor: pointer;
-}
 .footer {
     text-align: center;
     margin-top: 20px;
@@ -344,3 +302,50 @@ button:hover {
         margin-top: 10px;
     }
 }
+.music-player {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.controls {
+    margin: 10px 0;
+}
+
+.control-button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8c92e0;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+    background-color: #5550d7;
+}
+
+.control-button.active {
+    background-color: #ff9800; /* Highlight color when active */
+}
+
+.volume-control {
+    margin: 10px 0;
+}
+
+.playlist {
+    margin: 10px 0;
+}
+
+select {
+    padding: 5px;
+    font-size: 14px;
+}
+    

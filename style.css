@@ -7,6 +7,8 @@ body {
   text-align: center;
   margin: 20;
   padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .headline-container {
@@ -26,6 +28,7 @@ h1 {
 .headline-2 {
   line-height: 1;
   font-family: 'Merriweather', serif; 
+  display: flex;
 }
 
 .headline-1 {
@@ -138,4 +141,17 @@ h5 {
   font-size: 1.5em;
   color: #2980b9;
   padding: 10px;
+}
+@media (min-width: 768px) {
+  body {
+      font-size: 18px;
+  }
+
+  h1 {
+      font-size: 32px;
+  }
+
+  .wrapper {
+      max-width: 800px;
+  }
 }

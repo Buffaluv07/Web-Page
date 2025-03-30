@@ -1,163 +1,123 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const addButton = document.getElementById('add-button');
-    const todoInput = document.getElementById('todo-input');
-    const taskDateInput = document.getElementById('task-date');
-    const taskCategoryInput = document.getElementById('task-category');
-    const incompletedList = document.getElementById('incompleted-list');
-    const completedList = document.getElementById('completed-list');
+document.addEventListener("DOMContentLoaded", () => {
+    const taskInput = document.getElementById("todo-input");
+    const taskDateInput = document.getElementById("task-date");
+    const taskCategoryInput = document.getElementById("task-category");
+    const addButton = document.getElementById("add-button");
+    const incompleteList = document.getElementById("incompleted-list");
+    const completedList = document.getElementById("completed-list");
 
+    // Function to create a task element
+    const createTaskElement = (task) => {
+        const li = document.createElement("li");
+        li.classList.add("todo-list", task.category); // Add category class (personal or work)
 
-    loadTasks();
+        // Checkbox
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.classList.add("custom-checkbox");
 
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `task-${task.id}`;
+        checkbox.name = `task-${task.id}`;
 
-    addButton.addEventListener('click', (event) => {
-        event.preventDefault();
+        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svg.setAttribute("viewBox", "0 0 24 24");
+        svg.setAttribute("fill", "none");
+        svg.setAttribute("stroke-width", "2");
+        svg.setAttribute("stroke-linecap", "round");
+        svg.setAttribute("stroke-linejoin", "round");
 
-        const taskText = todoInput.value.trim();
-        const taskDate = taskDateInput.value;
-
-        if (!taskText) {
-            alert('Please enter a task.');
-            return;
-        }
-
-
-        const task = {
-            id: Date.now(),
-            text: taskText,
-            date: taskDate || null,
-            category: taskCategoryInput.value,
-            completed: false,
-        };
-
- 
-        saveTask(task);
-
-
-        addTaskToIncompleteList(task);
-
-        todoInput.value = '';
-        taskDateInput.value = '';
-        taskCategoryInput.value = 'work'; // 
-    });
-
-    function addTaskToIncompleteList(task) {
-        const taskElement = createTaskElement(task);
-        incompletedList.appendChild(taskElement);
-    }
-
-    // Create a task element
-    function createTaskElement(task) {
-        const li = document.createElement('li');
-        li.classList.add('todo-list');
-        li.setAttribute('data-id', task.id);
-
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.classList.add('custom-checkbox');
-
-        
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.checked = task.completed;
-
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
-        svg.setAttribute('viewBox', '0 0 24 24');
-        svg.setAttribute('fill', 'none');
-        svg.setAttribute('stroke-width', '2');
-        svg.setAttribute('stroke-linecap', 'round');
-        svg.setAttribute('stroke-linejoin', 'round');
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('d', 'M20 6L9 17l-5-5');
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M20 6L9 17l-5-5");
         svg.appendChild(path);
 
         checkboxLabel.appendChild(checkbox);
         checkboxLabel.appendChild(svg);
 
-        const taskLabel = document.createElement('label');
-        taskLabel.classList.add('task-label');
-        taskLabel.textContent = task.text;
+        // Task label
+        const taskLabel = document.createElement("label");
+        taskLabel.setAttribute("for", `task-${task.id}`);
+        taskLabel.classList.add("task-label", task.category); // Add category class for styling
+        taskLabel.textContent = `${task.text} (${task.date || "No date"})`;
 
-        // Add category-specific class
-        if (task.category === 'work') {
-            taskLabel.classList.add('work');
-        } else if (task.category === 'personal') {
-            taskLabel.classList.add('personal');
-        }
+        // Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
 
-        if (task.completed) {
-            taskLabel.style.textDecoration = 'line-through';
-        }
+        const deleteIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        deleteIcon.setAttribute("class", "delete-icon");
+        deleteIcon.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        deleteIcon.setAttribute("viewBox", "0 0 24 24");
+        deleteIcon.setAttribute("fill", "none");
+        deleteIcon.setAttribute("stroke", "currentColor");
+        deleteIcon.setAttribute("stroke-width", "2");
+        deleteIcon.setAttribute("stroke-linecap", "round");
+        deleteIcon.setAttribute("stroke-linejoin", "round");
 
-        const deleteButton = document.createElement('button');
-        deleteButton.classList.add('delete-button');
-        deleteButton.innerHTML = `
-            <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 6h18M9 6v12m6-12v12M19 6l-1 14H6L5 6"></path>
-            </svg>
-        `;
+        const deletePath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        deletePath.setAttribute("d", "M3 6h18M9 6v12m6-12v12M19 6l-1 14H6L5 6");
+        deleteIcon.appendChild(deletePath);
 
-        checkbox.addEventListener('change', () => {
-            task.completed = checkbox.checked;
-            updateTask(task);
+        deleteButton.appendChild(deleteIcon);
 
-            if (task.completed) {
-                taskLabel.style.textDecoration = 'line-through';
-                completedList.appendChild(li);
+        // Add delete functionality
+        deleteButton.addEventListener("click", () => {
+            li.remove();
+        });
+
+        // Handle task completion
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                taskLabel.style.textDecoration = "line-through";
+                completedList.appendChild(li); // Move to completed list
             } else {
-                taskLabel.style.textDecoration = 'none';
-                incompletedList.appendChild(li);
+                taskLabel.style.textDecoration = "none";
+                incompleteList.appendChild(li); // Move back to incomplete list
             }
         });
 
-
-        deleteButton.addEventListener('click', () => {
-            li.remove();
-            deleteTask(task.id);
-        });
-
+        // Append elements to the task item
         li.appendChild(checkboxLabel);
         li.appendChild(taskLabel);
         li.appendChild(deleteButton);
 
         return li;
-    }
+    };
 
+    // Add task to the incomplete list
+    const addTaskToIncompleteList = (task) => {
+        const taskElement = createTaskElement(task);
+        incompleteList.appendChild(taskElement);
+    };
 
-    function saveTask(task) {
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        tasks.push(task);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
+    // Handle adding a new task
+    addButton.addEventListener("click", (event) => {
+        event.preventDefault();
 
-    // Update task in localStorage
-    function updateTask(updatedTask) {
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        const index = tasks.findIndex((task) => task.id === updatedTask.id);
-        if (index !== -1) {
-            tasks[index] = updatedTask;
-            localStorage.setItem('tasks', JSON.stringify(tasks));
+        const taskText = taskInput.value.trim();
+        const taskDate = taskDateInput.value; // Get the date value
+        const taskCategory = taskCategoryInput.value; // Get the category value
+
+        if (!taskText) {
+            alert("Please enter a task.");
+            return;
         }
-    }
 
-    // Delete task from localStorage
-    function deleteTask(taskId) {
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        const updatedTasks = tasks.filter((task) => task.id !== taskId);
-        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-    }
+        const task = {
+            id: Date.now(),
+            text: taskText,
+            date: taskDate,
+            category: taskCategory,
+        };
 
-    // Load tasks from localStorage
-    function loadTasks() {
-        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        tasks.forEach((task) => {
-            if (task.completed) {
-                completedList.appendChild(createTaskElement(task));
-            } else {
-                addTaskToIncompleteList(task);
-            }
-        });
-    }
+        addTaskToIncompleteList(task);
+
+        // Clear the input fields
+        taskInput.value = "";
+        taskDateInput.value = "";
+        taskCategoryInput.value = "personal";
+    });
 });
 
 
@@ -167,94 +127,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const audioPlayer = document.getElementById('audio-player');
-    const audioSource = document.getElementById('audio-source');
-    const playButton = document.getElementById('play-button');
-    const pauseButton = document.getElementById('pause-button');
-    const nextButton = document.getElementById('next-button');
-    const stopButton = document.getElementById('stop-button');
-    const songSelect = document.getElementById('song-select');
-    const volumeSlider = document.getElementById('volume-slider');
-
-    let currentSongIndex = 0;
-
-    // Automatically play music when the page loads
-    audioPlayer.play();
-
-    // Play the music
-    playButton.addEventListener('click', () => {
-        audioPlayer.play();
-    });
-
-    // Pause the music
-    pauseButton.addEventListener('click', () => {
-        audioPlayer.pause();
-    });
-
-    // Stop the music
-    stopButton.addEventListener('click', () => {
-        audioPlayer.pause();
-        audioPlayer.currentTime = 0; // Reset to the beginning
-    });
-
-    // Play the next song
-    nextButton.addEventListener('click', () => {
-        playNextSong();
-    });
-
-    // Handle song selection from the dropdown
-    songSelect.addEventListener('change', (event) => {
-        const selectedSong = event.target.value; // Get the selected song's value (file path)
-        audioSource.src = selectedSong; // Update the audio source
-        audioPlayer.load(); // Reload the audio player with the new source
-        audioPlayer.play(); // Automatically play the selected song
-        updateCurrentSongIndex();
-    });
-
-    // Automatically play the next song when the current song ends
-    audioPlayer.addEventListener('ended', () => {
-        playNextSong();
-    });
-
-    // Adjust the volume
-    volumeSlider.addEventListener('input', (event) => {
-        audioPlayer.volume = event.target.value; // Set the volume based on the slider value
-    });
-
-    // Function to play the next song
-    function playNextSong() {
-        const options = Array.from(songSelect.options);
-        currentSongIndex = (currentSongIndex + 1) % options.length; // Loop back to the first song if at the end
-
-        // Update the dropdown selection
-        songSelect.selectedIndex = currentSongIndex;
-
-        // Update the audio source
-        const nextSong = options[currentSongIndex].value;
-        audioSource.src = nextSong;
-        audioPlayer.load(); // Reload the audio player with the new source
-        audioPlayer.play(); // Automatically play the next song
-    }
-
-    // Function to update the current song index based on the dropdown selection
-    function updateCurrentSongIndex() {
-        const options = Array.from(songSelect.options);
-        currentSongIndex = options.findIndex(option => option.value === audioSource.src);
-    }
-});
 document.addEventListener("DOMContentLoaded", () => {
     const audioPlayer = document.getElementById("audio-player");
     const songSelect = document.getElementById("song-select");
+    const playButton = document.getElementById("play-button");
+    const pauseButton = document.getElementById("pause-button");
+    const stopButton = document.getElementById("stop-button");
+    const nextButton = document.getElementById("next-button");
+    const volumeSlider = document.getElementById("volume-slider");
+    const controlButtons = document.querySelectorAll(".control-button");
 
-    // Play selected song
-    songSelect.addEventListener("change", (event) => {
-        const selectedSong = event.target.value;
-        audioPlayer.src = selectedSong;
-        audioPlayer.load();
+    // Function to play the selected song
+    const playSong = (songUrl) => {
+        audioPlayer.src = songUrl;
         audioPlayer.play().catch((error) => {
             console.error("Error playing audio:", error);
         });
+    };
+
+    // Highlight the active button
+    const highlightButton = (button) => {
+        controlButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+    };
+
+    // Play button functionality
+    playButton.addEventListener("click", () => {
+        audioPlayer.play().catch((error) => {
+            console.error("Error playing audio:", error);
+        });
+        highlightButton(playButton);
     });
+
+    // Pause button functionality
+    pauseButton.addEventListener("click", () => {
+        audioPlayer.pause();
+        highlightButton(pauseButton);
+    });
+
+    // Stop button functionality
+    stopButton.addEventListener("click", () => {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0; // Reset to the beginning
+        highlightButton(stopButton);
+    });
+
+    // Next button functionality
+    nextButton.addEventListener("click", () => {
+        const currentIndex = songSelect.selectedIndex;
+        const nextIndex = (currentIndex + 1) % songSelect.options.length; // Loop back to the first song
+        songSelect.selectedIndex = nextIndex;
+        playSong(songSelect.value);
+        highlightButton(nextButton);
+    });
+
+    // Change song when a new song is selected from the dropdown
+    songSelect.addEventListener("change", (event) => {
+        playSong(event.target.value);
+    });
+
+    // Volume control
+    volumeSlider.addEventListener("input", (event) => {
+        audioPlayer.volume = event.target.value;
+    });
+
+    // Play the first song on page load
+    playSong(songSelect.value);
+
+
+    // Duplicate playSong function removed
 });

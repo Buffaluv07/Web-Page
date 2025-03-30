@@ -104,3 +104,21 @@ h1 {
 #reset-game-btn:hover {
   background-color: #3498db;
 }
+.headline-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 30px;
+  color: #2d4152;
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  text-align: center;
+}
+.footer {
+  font-family: 'Merriweather', serif; 
+  font-size: 0.8em;
+  color: #555;
+  margin-top: 20px;
+  padding: 200px;
+}

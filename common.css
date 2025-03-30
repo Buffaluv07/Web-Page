@@ -108,3 +108,16 @@ body {
     display: block;
     width: 0;
   }
+  @media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .wrapper {
+        max-width: 800px;
+    }
+}
