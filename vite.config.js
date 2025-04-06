@@ -20,6 +20,7 @@ export default defineConfig({
                 ToDoApp: resolve(__dirname, 'ToDo-App/index.html'),
                 Bus: resolve(__dirname, 'Bus/index.html'),
                 Cash: resolve(__dirname, 'Cash/index.html'),
+                Register: resolve(__dirname, 'Register/index.html'),
             }
         },
     }
