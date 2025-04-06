@@ -1,7 +1,7 @@
-let cash = document.getElementById("cash");
-let displayChangeDue = document.getElementById("change-due");
-let purchaseBtn = document.getElementById("purchase-btn");
-let displayCid = document.getElementById("cash-in-drawer");
+const cash = document.getElementById("cash");
+const displayChangeDue = document.getElementById("change-due");
+const purchaseBtn = document.getElementById("purchase-btn");
+const displayCid = document.getElementById("cash-in-drawer");
 
 let price = 3.26;
 let cid = [
