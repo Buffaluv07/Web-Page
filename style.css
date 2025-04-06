@@ -97,11 +97,11 @@ nav-bar {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin: 20px auto; /* Add margin to position it under the h2 */
-  max-width: 400px; /* Reduce the width for a smaller bar */
+  margin: 20px auto; 
+  max-width: 400px; 
   background-color: #f9f9f9;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a professional look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Legend styling */

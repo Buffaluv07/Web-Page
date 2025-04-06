@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+</head>
+<body>
+    <fieldset class="nav">
+        <legend>Navigation</legend>
+        <h4>
+            <a href="../index.html">Home</a><br>
+            <a href="../Location/index.html">Projects Page</a>
+        </h4>
+    </fieldset>
+    
+    <h1 id="title">Frequent Bus Rider Survey</h1>
+    <p id="description">Please answer the following questions and let us know how we can better serve you. If you write a complaint, and would like us to contact you, fill in the Number section.</p>
+
+  <form id="survey-form">
+    <!-- Name Input -->
+    <label for="name">First Name:
+      <input type="text" id="name" name="first-name" required>
+    </label>
+
+    <!-- Age Input -->
+    <label for="age">Input your age (years):
+      <input type="number" id="age" name="age" min="0" max="99">
+    </label>
+
+    <!-- Email Input -->
+    <label for="email">Email: 
+      <input type="email" id="email" name="email" required>
+    </label>
+
+    <!-- Phone Number Input -->
+    <label for="number">(Optional) Phone Number:
+      <input type="text" id="number" name="phone-number">
+    </label>
+
+    <!-- Dropdown -->
+    <fieldset>
+      <legend>How often do you take the bus?</legend>
+      <label for="question">Select an option:
+        <select id="question" name="question">
+          <option value="1">0-2 times a week</option>
+          <option value="2">2-3 times a week</option>
+          <option value="3">5 times a week</option>
+          <option value="4">Everyday, can't get enough</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <!-- Years in Blacksburg -->
+    <fieldset>
+      <legend>Additional Information</legend>
+      <label for="years">How many years have you been living in Blacksburg?
+        <input type="number" id="years" name="years">
+      </label>
+
+      <!-- Comments -->
+      <label for="bio">Comments, Complaints:
+        <textarea id="bio" name="bio" rows="5" cols="50" placeholder="Enter your comments here..."></textarea>
+      </label>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <button type="submit" id="submit">Submit</button>
+  </form>
+
+  <footer class="footer">
+    <p>Made by Zoe Kornhauser with help from FreeCodeCamp</p>
+    <p>© 2025</p>
+  </footer>
+    <script src="script.js"></script>
+</body>
+</html>
