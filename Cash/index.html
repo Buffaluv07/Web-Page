@@ -24,6 +24,28 @@
             <div id="cash-in-drawer"></div>
         </main>
         <script src="script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const cashInput = document.getElementById('cash');
+                const purchaseBtn = document.getElementById('purchase-btn');
+                const priceDisplay = document.getElementById('price');
+                const changeDisplay = document.getElementById('change');
+                const changeDueDisplay = document.getElementById('change-due');
+                const cashInDrawerDisplay = document.getElementById('cash-in-drawer');
+
+                purchaseBtn.addEventListener('click', function() {
+                    const cashAmount = parseFloat(cashInput.value);
+                    if (isNaN(cashAmount) || cashAmount <= 0) {
+                        alert('Please enter a valid cash amount.');
+                        return;
+                    }
+                    priceDisplay.textContent = `Price: $${cashAmount.toFixed(2)}`;
+                    changeDisplay.textContent = `Change: $${(cashAmount - 20).toFixed(2)}`;
+                    changeDueDisplay.textContent = `Change Due: $${(cashAmount - 20).toFixed(2)}`;
+                    cashInDrawerDisplay.textContent = `Cash in Drawer: $${(100 - cashAmount).toFixed(2)}`;
+                });
+            });
+        </script>
         <div class="footer">
             <p>Made by Zoe Kornhauser, with help from FreeCodeCamp & YouTube</p>
             <p>© 2025</p>
