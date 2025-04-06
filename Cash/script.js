@@ -1,5 +1,3 @@
-
-/*
 let cash = document.getElementById("cash");
 let displayChangeDue = document.getElementById("change-due");
 let purchaseBtn = document.getElementById("purchase-btn");
@@ -18,14 +16,14 @@ let cid = [
   ["ONE HUNDRED", 100]
 ];
 
-document.getElementById("price").innerHTML = `<b>Price:</b> ${price}`;
+document.getElementById("price").innerHTML = `<b>Price:</b> $${price}`;
 
 const checkRegister = () => {
   let cashInt = parseFloat(cash.value);
   let change = Number((cashInt - price).toFixed(2));
   let totalCid = Number(cid.reduce((total, sum) => total + sum[1], 0).toFixed(2));
 
-  document.getElementById("change").innerHTML = `<b>Change:</b> ${change}`;
+  document.getElementById("change").innerHTML = `<b>Change:</b> $${change}`;
 
   if (cashInt < price) {
     alert("Customer does not have enough money to purchase the item");
