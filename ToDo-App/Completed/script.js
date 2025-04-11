@@ -1,7 +1,82 @@
-/*import DB from "./db.js"; */
+document.addEventListener("DOMContentLoaded", () => {
+    const completedTasksList = document.getElementById("completed-tasks");
 
+    // Function to load completed tasks from local storage
+    function loadCompletedTasks() {
+        const completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+        completedTasks.forEach((task) => {
+            addCompletedTaskToDOM(task);
+        });
+    }
 
-// ==========================
+    // Add a completed task to the DOM
+    function addCompletedTaskToDOM(task) {
+        const taskItem = document.createElement("li");
+        taskItem.classList.add("task-item");
+        taskItem.setAttribute("data-id", task.id);
+
+        taskItem.innerHTML = `
+            <span class="task-title">${task.title}</span>
+            <span class="task-datetime">${task.date}${task.time ? ` ${task.time}` : ""}</span>
+            <span class="task-category">[${task.category}]</span>
+            <button class="edit-task">Edit</button>
+            <button class="delete-task">Delete</button>
+        `;
+
+        // Add event listeners for Edit and Delete buttons
+        const editButton = taskItem.querySelector(".edit-task");
+        editButton.addEventListener("click", () => {
+            editCompletedTask(task.id);
+        });
+
+        const deleteButton = taskItem.querySelector(".delete-task");
+        deleteButton.addEventListener("click", () => {
+            deleteCompletedTask(task.id);
+        });
+
+        completedTasksList.appendChild(taskItem);
+    }
+
+    // Edit a completed task
+    function editCompletedTask(taskId) {
+        const completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+        const taskIndex = completedTasks.findIndex((task) => task.id === taskId);
+
+        if (taskIndex !== -1) {
+            const task = completedTasks[taskIndex];
+
+            // Populate the "Add New Task" form on the main page (if accessible)
+            alert("To edit this task, go back to the main page and re-add it to the task list.");
+
+            // Optionally, remove the task from completed tasks
+            completedTasks.splice(taskIndex, 1);
+            localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
+
+            // Remove the task from the DOM
+            const taskItem = document.querySelector(`[data-id="${taskId}"]`);
+            if (taskItem) {
+                taskItem.remove();
+            }
+        }
+    }
+
+    // Delete a completed task
+    function deleteCompletedTask(taskId) {
+        const completedTasks = JSON.parse(localStorage.getItem("completedTasks")) || [];
+        const updatedTasks = completedTasks.filter((task) => task.id !== taskId);
+
+        // Save the updated completed tasks to local storage
+        localStorage.setItem("completedTasks", JSON.stringify(updatedTasks));
+
+        // Remove the task from the DOM
+        const taskItem = document.querySelector(`[data-id="${taskId}"]`);
+        if (taskItem) {
+            taskItem.remove();
+        }
+    }
+
+    loadCompletedTasks();
+});
 // TASK MANAGEMENT
 // ==========================
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,14 +87,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskTimeInput = document.getElementById("task-time");
     const setReminderCheckbox = document.getElementById("set-reminder");
 
+    // Enable/disable time input based on the reminder checkbox
     setReminderCheckbox.addEventListener("change", () => {
         taskTimeInput.disabled = !setReminderCheckbox.checked;
     });
 
+    // Load tasks on page load
     loadTasks();
 
+    // Check for late tasks every minute
     setInterval(checkForLateTasks, 60000);
 
+    // Handle new task submission
     newTaskForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -31,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (setReminderCheckbox.checked && !taskTime) {
             const userConfirmed = confirm("You have not set a time for the reminder. Do you want to continue without a time?");
             if (!userConfirmed) {
-                return;
+                return; // Stop form submission if the user selects "No"
             }
         }
 
@@ -51,6 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
         newTaskForm.reset();
     });
 
+    // Load tasks from local storage
     function loadTasks() {
         const tasks = getTasksFromLocalStorage();
         tasks.forEach((task) => {
@@ -64,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Add a task to the DOM
     function addTaskToDOM(task, isCompleted, isLate = false) {
         const taskItem = document.createElement("li");
         taskItem.classList.add("task-item");
@@ -109,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Edit a task and populate the "Add New Task" form
     function editTask(taskId, isCompleted, isLate) {
         const tasks = isCompleted ? getCompletedTasksFromLocalStorage() : getTasksFromLocalStorage();
         const taskIndex = tasks.findIndex((task) => task.id === taskId);
@@ -116,11 +198,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (taskIndex !== -1) {
             const task = tasks[taskIndex];
 
+            // Populate the "Add New Task" form with the task's details
             document.getElementById("task-title").value = task.title;
             document.getElementById("task-date").value = task.date;
             document.getElementById("task-time").value = task.time || "";
             document.getElementById("task-category").value = task.category;
 
+            // Remove the task from local storage and the DOM
             tasks.splice(taskIndex, 1);
             if (isCompleted) {
                 saveCompletedTasksToLocalStorage(tasks);
@@ -135,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Mark a task as completed
     function markTaskAsCompleted(taskId) {
         const tasks = getTasksFromLocalStorage();
         const taskIndex = tasks.findIndex((task) => task.id === taskId);
@@ -143,11 +228,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const task = tasks[taskIndex];
             task.completed = true;
 
-            tasks.splice(taskIndex, 1);
+            // Save the updated task to local storage
+            tasks.splice(taskIndex, 1); // Remove from tasks
             saveTasksToLocalStorage(tasks);
 
+            // Save to completed tasks
             saveCompletedTaskToLocalStorage(task);
 
+            // Remove from the DOM and add to the completed section
             const taskItem = document.querySelector(`[data-id="${taskId}"]`);
             if (taskItem) {
                 taskItem.remove();
@@ -157,12 +245,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Check if a task is late
     function checkIfTaskIsLate(task) {
         const taskDateTime = new Date(`${task.date}T${task.time || "23:59"}`);
         const now = new Date();
         return taskDateTime < now;
     }
 
+    // Check for late tasks
     function checkForLateTasks() {
         const tasks = getTasksFromLocalStorage();
         tasks.forEach((task) => {
@@ -176,6 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Delete a task from the DOM and local storage
     function deleteTaskFromDOM(taskId) {
         const tasks = getTasksFromLocalStorage();
         const updatedTasks = tasks.filter((task) => task.id !== taskId);
@@ -187,6 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Local storage helper functions
     function getTasksFromLocalStorage() {
         return JSON.parse(localStorage.getItem("tasks")) || [];
     }
@@ -212,165 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// ==========================
-// NOTES MANAGEMENT
-// ==========================
-document.addEventListener("DOMContentLoaded", () => {
-    const newNoteForm = document.getElementById("new-note-form");
-    const notesList = document.getElementById("notes-list");
-
-    loadNotes();
-
-    newNoteForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const noteContent = document.getElementById("note-content").value;
-
-        const note = {
-            id: Date.now(),
-            content: noteContent,
-        };
-
-        saveNoteToLocalStorage(note);
-        addNoteToDOM(note);
-        newNoteForm.reset();
-    });
-
-    function loadNotes() {
-        const notes = getNotesFromLocalStorage();
-        notes.forEach((note) => {
-            addNoteToDOM(note);
-        });
-    }
-
-    function addNoteToDOM(note) {
-        const noteItem = document.createElement("li");
-        noteItem.classList.add("note-item");
-        noteItem.setAttribute("data-id", note.id);
-        noteItem.innerHTML = `
-            <span class="note-content">${note.content}</span>
-            <button class="edit-note">Edit</button>
-            <button class="delete-note">Delete</button>
-        `;
-
-        const editButton = noteItem.querySelector(".edit-note");
-        editButton.addEventListener("click", () => {
-            editNoteContent(note.id);
-        });
-
-        const deleteButton = noteItem.querySelector(".delete-note");
-        deleteButton.addEventListener("click", () => {
-            deleteNoteFromDOM(note.id);
-        });
-
-        notesList.appendChild(noteItem);
-    }
-
-    function editNoteContent(noteId) {
-        const notes = getNotesFromLocalStorage();
-        const noteIndex = notes.findIndex((note) => note.id === noteId);
-
-        if (noteIndex !== -1) {
-            const newContent = prompt("Edit your note:", notes[noteIndex].content);
-            if (newContent !== null) {
-                notes[noteIndex].content = newContent;
-                saveNotesToLocalStorage(notes);
-
-                const noteItem = document.querySelector(`[data-id="${noteId}"] .note-content`);
-                noteItem.textContent = newContent;
-            }
-        }
-    }
-
-    function deleteNoteFromDOM(noteId) {
-        const notes = getNotesFromLocalStorage();
-        const updatedNotes = notes.filter((note) => note.id !== noteId);
-        saveNotesToLocalStorage(updatedNotes);
-
-        const noteItem = document.querySelector(`[data-id="${noteId}"]`);
-        if (noteItem) {
-            noteItem.remove();
-        }
-    }
-
-    function getNotesFromLocalStorage() {
-        return JSON.parse(localStorage.getItem("notes")) || [];
-    }
-
-    function saveNoteToLocalStorage(note) {
-        const notes = getNotesFromLocalStorage();
-        notes.push(note);
-        saveNotesToLocalStorage(notes);
-    }
-
-    function saveNotesToLocalStorage(notes) {
-        localStorage.setItem("notes", JSON.stringify(notes));
-    }
-});
-
-
-
-// ==========================
-// MUSIC CONTROLS
-// ==========================
-document.addEventListener("DOMContentLoaded", () => {
-    const backgroundMusic = document.getElementById("background-music");
-    const playMusicButton = document.getElementById("play-music");
-    const pauseMusicButton = document.getElementById("pause-music");
-    const stopMusicButton = document.getElementById("stop-music");
-    const progressBar = document.getElementById("progress-bar");
-    const currentTimeDisplay = document.getElementById("current-time");
-    const totalDurationDisplay = document.getElementById("total-duration");
-
-    playMusicButton.addEventListener("click", () => {
-        backgroundMusic.play();
-    });
-
-    pauseMusicButton.addEventListener("click", () => {
-        backgroundMusic.pause();
-    });
-
-    stopMusicButton.addEventListener("click", () => {
-        backgroundMusic.pause();
-        backgroundMusic.currentTime = 0;
-    });
-
-    backgroundMusic.addEventListener("timeupdate", () => {
-        const currentTime = backgroundMusic.currentTime;
-        const duration = backgroundMusic.duration;
-
-        progressBar.value = (currentTime / duration) * 100;
-
-        currentTimeDisplay.textContent = formatTime(currentTime);
-
-        if (!isNaN(duration)) {
-            totalDurationDisplay.textContent = formatTime(duration);
-        }
-    });
-
-    progressBar.addEventListener("input", () => {
-        const duration = backgroundMusic.duration;
-        backgroundMusic.currentTime = (progressBar.value / 100) * duration;
-    });
-
-    function formatTime(seconds) {
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
-    }
-});
-
-
-
-const volumeControl = document.getElementById("volume-control");
-volumeControl.addEventListener("input", () => {
-    const backgroundMusic = document.getElementById("background-music");
-    backgroundMusic.volume = volumeControl.value;
-});
-
-/* Not using atm
-await DB.ready;
-await DB.c({ text: "welcome" });
-
-const notes = await DB.r();
-console.log(notes); */
+if (typeof Storage === "undefined") {
+    alert("Your browser does not support localStorage. Some features may not work.");
+}

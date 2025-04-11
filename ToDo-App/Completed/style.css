@@ -1,0 +1,68 @@
+
+body {
+    font-family:'Courier New', Courier, monospace; /* Set the global font */
+    margin: 0;
+    padding: 0;
+    background-color: #4d5fb2;
+    color: #f1e8e8; /* Default text color */
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Courier New', Courier, monospace; /* Ensure headings use the same font */
+    color: #f1e8e8; /* Consistent heading color */
+}
+
+p, ul, li, span, input, button, textarea {
+    font-family: 'Merriweather', serif; /* Apply the global font to all text elements */
+}
+
+header {
+    background-color: #4d5fb2;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+.header-logo svg {
+    width: 50px;
+    height: 50px;
+    margin-top: -80px;
+    margin-left: 180px;
+    position: absolute;
+    opacity: 0.5;
+    filter: drop-shadow(2px 2px 4px #000000);
+    animation: fade-in 1s ease-in-out;
+}
+
+main {
+    padding: 1rem;
+}
+h1{
+    font-size: 3rem;
+    color: #f1e8e8;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: Merriweather;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+h2 {
+    color: #f7f7f8;
+    font-size: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+.completed-task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #4d5fb2; /* Background color for the completed task list */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
