@@ -3,20 +3,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const newNoteForm = document.getElementById("new-note-form");
     const noteContentInput = document.getElementById("note-content");
 
-    // Load notes from localStorage and display them
+    // Load notes from localStorage and display them grouped by date
     function loadNotes() {
         const notes = getNotesFromLocalStorage();
+        const today = new Date().toLocaleDateString();
+        const currentMonth = new Date().getMonth();
 
-        // Sort notes by creation date (most recent first)
-        notes.sort((a, b) => b.id - a.id);
+        // Separate notes into "Today's Notes" and "Previous Month's Notes"
+        const todaysNotes = notes.filter((note) => new Date(note.date).toLocaleDateString() === today);
+        const previousMonthNotes = notes.filter((note) => new Date(note.date).getMonth() < currentMonth);
 
         // Clear the notes list before reloading
         notesList.innerHTML = "";
 
-        // Add notes to the DOM
-        notes.forEach((note) => {
-            addNoteToDOM(note);
-        });
+        // Add "Today's Notes" header and notes
+        if (todaysNotes.length > 0) {
+            const todayHeader = document.createElement("h3");
+            todayHeader.textContent = "Today's Notes";
+            notesList.appendChild(todayHeader);
+
+            todaysNotes.forEach((note) => {
+                addNoteToDOM(note);
+            });
+        }
+
+        // Add "Previous Month's Notes" header and notes
+        if (previousMonthNotes.length > 0) {
+            const previousMonthHeader = document.createElement("h3");
+            previousMonthHeader.textContent = "Previous Month's Notes";
+            notesList.appendChild(previousMonthHeader);
+
+            previousMonthNotes.forEach((note) => {
+                addNoteToDOM(note);
+            });
+        }
     }
 
     // Save a new note to localStorage
@@ -69,7 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 notes[noteIndex].content = newContent.trim();
                 saveNotesToLocalStorage(notes);
 
-                // Update the note in the DOM
                 const noteItem = document.querySelector(`[data-id="${noteId}"] .note-content`);
                 noteItem.textContent = newContent.trim();
             }
@@ -87,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const updatedNotes = notes.filter((note) => note.id !== noteId);
         localStorage.setItem("notes", JSON.stringify(updatedNotes));
 
-        // Remove the note from the DOM
         const noteItem = document.querySelector(`[data-id="${noteId}"]`);
         if (noteItem) {
             noteItem.remove();
@@ -112,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Save the note to localStorage and add it to the DOM
         saveNoteToLocalStorage(note);
-        loadNotes(); // Reload notes to update the order
+        loadNotes(); // Reload notes to update the grouping
 
         // Clear the input field
         newNoteForm.reset();
