@@ -1,4 +1,4 @@
-/* Base styles (for desktop and larger screens) */
+
 body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
@@ -7,310 +7,314 @@ body {
     color: #f1e8e8;
 }
 
-h2, h3, h4, h5, h6 {
+h1, h2 {
     font-family: 'Courier New', Courier, monospace;
     color: #f1e8e8;
+}
+h3, h4, h5, h6 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #080404;
 }
 
 p, ul, li, span, input, button, textarea {
     font-family: 'Merriweather', serif;
 }
 
-header {
-    background-color: #4d5fb2;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-}
 
-.header-logo svg {
-    width: 50px;
-    height: 50px;
-    margin-top: -80px;
-    margin-left: 180px;
-    position: absolute;
-    opacity: 0.5;
-    filter: drop-shadow(2px 2px 4px #000000);
-    animation: fade-in 1s ease-in-out;
-}
-
-main {
-    padding: 1rem;
-}
-
-h1 {
-    font-size: 4rem;
-    color: #f1e8e8;
-    text-align: center;
-    margin-bottom: 1rem;
-    font-family: Merriweather;
-    text-shadow: 2px 2px 4px #000000;
-}
 header nav ul {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    padding: 0;
+    gap: 1.5rem;
+    padding: 20px 0;
     margin: 0;
     list-style: none;
 }
 
 header nav ul li a {
     display: inline-block;
-    padding: 0.6rem 1.2rem; /* Reduced padding */
-    font-size: 0.9rem; /* Reduced font size */
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
     font-weight: bold;
     text-decoration: none;
-    color: #ffffff; /* Bright white text */
-    background-color: #007BFF; /* Bright blue background */
+    color: #ffffff;
+    background-color: #1e242b;
     border-radius: 10px;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 header nav ul li a:hover {
-    background-color: #0056b3; 
-    transform: translateY(-2px); 
+    background-color: #0056b3;
+    transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 header nav ul li a:active {
-    background-color: #003f7f; 
-    transform: translateY(0); 
+    background-color: #003f7f;
+    transform: translateY(0);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-section {
-    margin-bottom: 2rem;
+/* Main Content Styles */
+main {
+    padding: 2rem 1rem;
+    max-width: 800px; /* Limit the width for better readability */
+    margin: 0 auto; /* Center the content */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-.new-task-selection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 h2 {
-    color: #f7f7f8;
     font-size: 2rem;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.task-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4d5fb2;
-    margin-bottom: 0.5rem;
-    padding: 0.8rem;
-    border: 1px solid #f1e8e8;
-    border-radius: 15px;
-    font-size: larger;
-    color: #f1e8e8;
-}
-
-.task-item .task-title {
-    font-weight: bold;
-    font-size: larger;
-    color: #faf8f8;
-}
-
-.task-item .task-datetime,
-.task-item .task-category {
-    font-size: 1.4rem;
-    color: #f6f3f3;
-}
-
-.task-item button {
-    background-color: #4309ef;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#task-title {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 15px 20px;
-    width: 100%;
-    background: white;
-    border: 2px solid var(--secondary-color);
-    border-radius: 1000px;
-    font: inherit;
-    color: #060606;
-    margin-bottom: 10px;
-}
-
-.task-item button:hover {
-    background-color: #b6bbb6;
-}
-
-.work-task {
-    border-left: 5px solid #007BFF;
-}
-
-.personal-task {
-    border-left: 5px solid #FF5733;
-}
-
-.late-task {
-    border-left: 5px solid #FF0000;
-    background-color: #a41f1f;
-    color: #e16464;
-    font-weight: bold;
-}
-
-/* Background Music Section */
-#background-music-section {
-    margin: 1rem 0;
-    padding: 1rem;
-    background-color: #8f2f2f;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    color: #465080;
     text-align: center;
-}
-
-#background-music-section button {
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #4c7aaf;
-    color: rgb(215, 220, 227);
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-#background-music-section button:hover {
-    background-color: #456ca0;
+    margin-bottom: 1.5rem;
 }
 
 /* Notes Section */
 #notes-section {
-    margin: 2rem 0;
-    padding: 1rem;
+    margin-top: 20px;
+    padding: 20px;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #beb5b5;
+    border-radius: 8px;
 }
 
-#notes-section h2 {
-    color: #333;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-#new-note-form textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 9px;
-    font-size: 1rem;
-}
-
-#new-note-form button {
-    background-color: #4c86af;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#new-note-form button:hover {
-    background-color: #838e84;
+#notes-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .note-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f6f7f1;
     border: 1px solid #ddd;
     border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .note-item .note-content {
     flex-grow: 1;
-    margin-right: 1rem;
+    margin-right: 10px;
+    color: #0a0606;
+}
+
+.note-date {
+    font-size: 0.8rem;
+    color: #170808;
+    margin-left: 10px;
+    font-style: italic;
 }
 
 .note-item button {
-    margin-left: 0.5rem;
-    background-color: #4c7aaf;
-    color: white;
+    margin-left: 5px;
+    padding: 5px 10px;
     border: none;
-    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
-.note-item button:hover {
-    background-color: #808781;
+.note-item button.edit-note {
+    background-color: #99bef7;
+    color: rgb(17, 12, 12);
+    transition: background-color 0.3s ease;
 }
 
+.note-item button.edit-note:hover {
+    background-color: #798da2;
+}
 
-.delete-task {
-    background-color: #d9534f;
+.note-item button.delete-note {
+    background-color: #dc3545;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.note-item button.delete-note:hover {
+    background-color: #a71d2a;
+}
+
+/* Form Styles */
+#new-note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 20px;
+    align-items: center; /* Center the form elements */
+}
+
+#note-content {
+    width: 100%;
+    max-width: 600px; /* Limit the width for better readability */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#new-note-form button {
+    padding: 10px;
+    background-color: #384a59;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    width: 150px;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#new-note-form button:hover {
+    background-color: #9194a1;
+}
+
+.footer {
+    background-color: #4d5fb2;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+/* Music Player Section */
+.music-player {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 2px solid #beb5b5; /* Subtle border to match the notes section */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a soft shadow for depth */
+    text-align: center;
+    max-width: 600px; /* Limit the width for better readability */
+    margin: 0 auto; /* Center the music player */
+}
+
+.music-player audio {
+    display: none; /* Hide the default audio player */
+}
+
+.music-player .controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.music-player .control-button {
+    background-color: #4c86af;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-family: 'Courier New', Courier, monospace;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.delete-task:hover {
-    background-color: #c9302c;
-    transform: translateY(-2px);
+.music-player .control-button:hover {
+    background-color: #838e84;
 }
 
-.delete-task:active {
-    background-color: #ac2e25;
-    transform: translateY(0);
+.music-player .volume-control {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #465080;
 }
 
-.task-item {
-    animation: fadeIn 0.3s ease-in-out;
+.music-player .volume-control label {
+    margin-right: 0.5rem;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.music-player .volume-control input[type="range"] {
+    width: 200px;
 }
-/* Responsive styles for smaller screens */
+
+.music-player .playlist {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #465080;
+}
+
+.music-player .playlist label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.music-player .playlist select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333;
+}
+.music-player .playlist select option {
+    background-color: #ffffff;
+    color: #333;
+}
+.music-player .playlist select option:hover {
+    background-color: #f0f0f0;
+}
+.music-player .playlist select option:active {
+    background-color: #e0e0e0;
+}
+.music-player .playlist select option:focus {
+    background-color: #e0e0e0;
+}
+/* Utility Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Responsive Styles for Mobile */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .task-item {
-        flex-direction: column;
-        align-items: flex-start;
         padding: 0.5rem;
-        font-size: 1rem;
     }
 
-    .task-item button {
-        margin-top: 0.5rem;
+    .header-logo svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    header nav ul li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
     }
 
     h1 {
@@ -321,53 +325,34 @@ ul {
         font-size: 1.5rem;
     }
 
-    #background-music-section,
-    #notes-section {
-        padding: 0.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 12px;
+    main {
+        padding: 1rem;
     }
 
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    .task-item {
-        padding: 0.4rem;
+    #note-content {
         font-size: 0.9rem;
+        padding: 8px;
     }
 
-    .task-item button {
+    #new-note-form button {
+        font-size: 0.9rem;
+        padding: 8px;
+        width: 100%; /* Make the button full-width on mobile */
+    }
+
+    .note-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px;
+    }
+
+    .note-item .note-content {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .note-item button {
         font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
-    }
-
-    #new-note-form textarea {
-        height: 80px;
-    }
-}
-@media (max-width: 768px) {
-    header nav ul {
-        flex-direction: column; /* Stack navigation buttons vertically */
-        align-items: center;
-        gap: 0.5rem; /* Reduce spacing between buttons */
-    }
-
-    header nav ul li a {
-        padding: 0.5rem 1rem; /* Reduce padding for smaller screens */
-        font-size: 0.8rem; /* Reduce font size for smaller screens */
-        width: 90%; /* Make buttons take up most of the screen width */
-        text-align: center; /* Center-align text */
-    }
-}
-
-@media (max-width: 480px) {
-    header nav ul li a {
-        padding: 0.4rem 0.8rem; /* Further reduce padding for very small screens */
-        font-size: 0.7rem; /* Further reduce font size */
+        padding: 4px 8px;
     }
 }
