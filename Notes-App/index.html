@@ -3,41 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Notes-App/style.css"> <!-- Adjust path if needed -->
+    <link rel="stylesheet" href="/Notes-App/style.css">
     <title>Notes</title>
 </head>
 <body>
     <div class="container">
-    <header>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../index.html">Main Page</a></li>
-            </ul>
-        </nav>
-    </header>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html">Main Page</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <h2>Notes</h2>
-        <form id="new-note-form">
-            <textarea id="note-content" placeholder="Write your note here..." required></textarea>
-            <button type="submit">Add Note</button>
-        </form>
-        <ul id="notes-list">
-            <!-- Notes will be dynamically added here -->
-        </ul>
-    
-    </main>
+        <main>
+            <div id="search-container">
+                <input type="text" id="search-bar" placeholder="Search notes...">
+                <button id="search-btn">Search</button>
+            </div>
+            <h2>Notes</h2>
+            <form id="new-note-form">
+                <textarea id="note-content" placeholder="Write your note here..." required></textarea>
+                <select id="note-category">
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Ideas">Ideas</option>
+                    <option value="Urgent">Urgent</option> <!-- New category -->
+                </select>
+                <button type="submit">Add Note</button>
+            </form>
 
-    <div class="footer">
-        <p>Made by Zoe Kornhauser Music Player with help of VS Code.</p>
-        <p>© 2025</p>
-        <p>All rights reserved</p>
+            <div id="filter-container">
+                <label for="filter-category">Filter by Category:</label>
+                <select id="filter-category">
+                    <option value="All">All</option>
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Ideas">Ideas</option>
+                    <option value="Urgent">Urgent</option>
+                </select>
+            </div>
+
+            <ul id="notes-list"></ul>
+        </main>
+
+        <footer class="footer">
+            <p>Made by Zoe Kornhauser with help from YouTube Videos & Class</p>
+            <p>© 2025</p>
+            <p>All rights reserved</p>
+        </footer>
     </div>
-    </div>
-
-    <!-- Link to the JavaScript file -->
-    <script src="script.js" type="module"></script>
-
+    <script src="/Notes-App/script.js" defer></script>
 </body>
 </html>

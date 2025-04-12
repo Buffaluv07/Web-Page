@@ -190,6 +190,43 @@ h2 {
     position: relative;
     bottom: 0;
     width: 100%;
+    font-size: 0.9rem;
+}
+
+#new-note-form select, #filter-container select {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#filter-container {
+    margin: 20px 0;
+    color:#000000;
+}
+.note-category {
+    font-size: 0.9rem;
+    color: #000000;
+    margin-left: 10px;
+}
+.note-category-label {
+    font-size: 0.9rem;
+    color: #000000;
+    margin-right: 5px;
+}
+#search-container {
+    margin: 10px 0; 
+    text-align: center;
+}
+
+#search-bar {
+    width: 80%; 
+    max-width: 400px; 
+    padding: 8px; 
+    font-size: 0.9rem; 
+    border: 1px solid #ccc; 
+    border-radius: 6px; 
+    background-color: #f9f9f9; 
+    box-shadow: none; 
 }
 
 ul {
@@ -206,6 +243,48 @@ button {
     margin: 0 auto;
     padding: 0 1rem;
 }
+
+
+
+.note-category {
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+
+.note-category[data-category="Work"] {
+    color: #ffffff;
+    background-color: #007bff; 
+}
+
+.note-category[data-category="Personal"] {
+    color: #ffffff;
+    background-color: #28a745; 
+}
+
+.note-category[data-category="Ideas"] {
+    color: #ffffff;
+    background-color: #ffc107; 
+}
+
+.note-category[data-category="Urgent"] {
+    color: #ffffff;
+    background-color: #dc3545; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     header {
