@@ -3,20 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const newNoteForm = document.getElementById("new-note-form");
     const noteContentInput = document.getElementById("note-content");
 
-    // Load notes from localStorage and display them grouped by date
+   
     function loadNotes() {
         const notes = getNotesFromLocalStorage();
         const today = new Date().toLocaleDateString();
         const currentMonth = new Date().getMonth();
 
-        // Separate notes into "Today's Notes" and "Previous Month's Notes"
+    
         const todaysNotes = notes.filter((note) => new Date(note.date).toLocaleDateString() === today);
         const previousMonthNotes = notes.filter((note) => new Date(note.date).getMonth() < currentMonth);
 
-        // Clear the notes list before reloading
         notesList.innerHTML = "";
 
-        // Add "Today's Notes" header and notes
         if (todaysNotes.length > 0) {
             const todayHeader = document.createElement("h3");
             todayHeader.textContent = "Today's Notes";
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
-        // Add "Previous Month's Notes" header and notes
         if (previousMonthNotes.length > 0) {
             const previousMonthHeader = document.createElement("h3");
             previousMonthHeader.textContent = "Previous Month's Notes";
@@ -39,19 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Save a new note to localStorage
     function saveNoteToLocalStorage(note) {
         const notes = getNotesFromLocalStorage();
         notes.push(note);
         localStorage.setItem("notes", JSON.stringify(notes));
     }
 
-    // Get all notes from localStorage
     function getNotesFromLocalStorage() {
         return JSON.parse(localStorage.getItem("notes")) || [];
     }
 
-    // Add a note to the DOM
+
     function addNoteToDOM(note) {
         const noteItem = document.createElement("li");
         noteItem.classList.add("note-item");
@@ -63,13 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
             <button class="delete-note">Delete</button>
         `;
 
-        // Add event listener for editing the note
+
         const editButton = noteItem.querySelector(".edit-note");
         editButton.addEventListener("click", () => {
             editNoteContent(note.id);
         });
 
-        // Add event listener for deleting the note
+
         const deleteButton = noteItem.querySelector(".delete-note");
         deleteButton.addEventListener("click", () => {
             deleteNoteFromDOM(note.id);
@@ -78,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         notesList.appendChild(noteItem);
     }
 
-    // Edit the content of a note
+ 
     function editNoteContent(noteId) {
         const notes = getNotesFromLocalStorage();
         const noteIndex = notes.findIndex((note) => note.id === noteId);
@@ -95,12 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Save all notes to localStorage
+
     function saveNotesToLocalStorage(notes) {
         localStorage.setItem("notes", JSON.stringify(notes));
     }
 
-    // Delete a note from the DOM and localStorage
     function deleteNoteFromDOM(noteId) {
         const notes = getNotesFromLocalStorage();
         const updatedNotes = notes.filter((note) => note.id !== noteId);
@@ -112,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Handle the submission of the new note form
     newNoteForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -123,19 +116,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const note = {
-            id: Date.now(), // Unique ID for the note
+            id: Date.now(), 
             content: noteContent,
-            date: new Date().toLocaleString(), // Add the current date and time
+            date: new Date().toLocaleString(), 
         };
 
-        // Save the note to localStorage and add it to the DOM
+       
         saveNoteToLocalStorage(note);
-        loadNotes(); // Reload notes to update the grouping
+        loadNotes(); 
 
-        // Clear the input field
         newNoteForm.reset();
     });
 
-    // Load notes when the page loads
+
     loadNotes();
 });
