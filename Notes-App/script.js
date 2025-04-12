@@ -58,6 +58,35 @@ document.addEventListener("DOMContentLoaded", () => {
         notesList.appendChild(noteItem);
     }
 
+    // Edit a note's content
+    function editNoteContent(noteId) {
+        const notes = getNotesFromLocalStorage();
+        const noteIndex = notes.findIndex(note => note.id === noteId);
+
+        if (noteIndex !== -1) {
+            const newContent = prompt("Edit your note:", notes[noteIndex].content);
+            if (newContent !== null && newContent.trim() !== "") {
+                notes[noteIndex].content = newContent.trim();
+                saveNotesToLocalStorage(notes);
+
+                const noteItem = document.querySelector(`[data-id="${noteId}"] .note-content`);
+                noteItem.textContent = newContent.trim();
+            }
+        }
+    }
+
+    // Delete a note from the DOM and localStorage
+    function deleteNoteFromDOM(noteId) {
+        const notes = getNotesFromLocalStorage();
+        const updatedNotes = notes.filter(note => note.id !== noteId);
+        saveNotesToLocalStorage(updatedNotes);
+
+        const noteItem = document.querySelector(`[data-id="${noteId}"]`);
+        if (noteItem) {
+            noteItem.remove();
+        }
+    }
+
     // Add a new note
     newNoteForm.addEventListener("submit", (event) => {
         event.preventDefault();
