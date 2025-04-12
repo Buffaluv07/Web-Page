@@ -19,7 +19,7 @@ export default defineConfig({
                 RockPaper: resolve(__dirname, 'RockPaper/index.html'),
                 Bus: resolve(__dirname, 'Bus/index.html'),
                 Cash: resolve(__dirname, 'Cash/index.html'),
-                Notes: resolve(__dirname, 'Notes-App/index.html'),
+                notesApp: resolve(__dirname, 'Notes-App/index.html'),
             }
         },
     }
