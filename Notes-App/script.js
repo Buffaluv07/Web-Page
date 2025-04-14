@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderNotes(filter = "All", searchTerm = "") {
         const notes = getNotesFromLocalStorage();
         notesList.innerHTML = "";
+        const sortedNotes = notes.sort((a, b) => b.id - a.id);
 
         const filteredNotes = notes.filter(note => {
             const matchesCategory = filter === "All" || note.category === filter;
