@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
-  <script type="module" crossorigin src="/Web-Page/assets/notesApp-C7QiSIg9.js"></script>
+  <script type="module" crossorigin src="/Web-Page/assets/notesApp-CkEC8dA4.js"></script>
   <link rel="modulepreload" crossorigin href="/Web-Page/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/Web-Page/assets/notesApp-CZvmkzis.css">
+  <link rel="stylesheet" crossorigin href="/Web-Page/assets/notesApp-CUP-3F7Q.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <nav>
+            <nav aria-label="Main Navigation">
                 <ul>
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../Location/index.html">Projects Page</a></li>
@@ -21,24 +21,28 @@
 
         <main>
             <div id="search-container">
-                <input type="text" id="search-bar" placeholder="Search notes...">
-                <button id="search-btn">Search</button>
+                <label for="search-bar" class="sr-only">Search Notes</label>
+                <input type="text" id="search-bar" placeholder="Search notes..." aria-label="Search notes">
+                <button id="search-btn" aria-label="Search notes">Search</button>
             </div>
-            <h2>Notes</h2>
-            <form id="new-note-form">
-                <textarea id="note-content" placeholder="Write your note here..." required></textarea>
-                <select id="note-category">
+
+            <h2 id="notes-heading">Notes</h2>
+            <form id="new-note-form" aria-labelledby="form-heading">
+            <label for="note-content">Note Content:</label>
+                <textarea id="note-content" placeholder="Write your note here..." required aria-required="true"></textarea>
+                <label for="note-category">Category:</label>
+                <select id="note-category" aria-required="true">
                     <option value="Work">Work</option>
                     <option value="Personal">Personal</option>
                     <option value="Ideas">Ideas</option>
-                    <option value="Urgent">Urgent</option> <!-- New category -->
+                    <option value="Urgent">Urgent</option>
                 </select>
-                <button type="submit">Add Note</button>
+                <button type="submit" aria-label="Add Note">Add Note</button>
             </form>
 
             <div id="filter-container">
                 <label for="filter-category">Filter by Category:</label>
-                <select id="filter-category">
+                <select id="filter-category" aria-label="Filter notes by category">
                     <option value="All">All</option>
                     <option value="Work">Work</option>
                     <option value="Personal">Personal</option>
@@ -47,7 +51,11 @@
                 </select>
             </div>
 
-            <ul id="notes-list"></ul>
+            <section aria-labelledby="notes-heading">
+                <ul id="notes-list" role="list" aria-live="polite">
+                    <!-- Notes will be dynamically added here -->
+                </ul>
+            </section>
         </main>
 
         <footer class="footer">
