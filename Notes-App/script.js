@@ -6,17 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterCategoryInput = document.getElementById("filter-category");
     const searchBar = document.getElementById("search-bar");
 
-    // Load notes from localStorage
+
     function getNotesFromLocalStorage() {
         return JSON.parse(localStorage.getItem("notes")) || [];
     }
 
-    // Save notes to localStorage
+ 
     function saveNotesToLocalStorage(notes) {
         localStorage.setItem("notes", JSON.stringify(notes));
     }
 
-    // Render notes
+   
     function renderNotes(filter = "All", searchTerm = "") {
         const notes = getNotesFromLocalStorage();
         notesList.innerHTML = "";
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Add a note to the DOM
+  
     function addNoteToDOM(note) {
         const noteItem = document.createElement("li");
         noteItem.classList.add("note-item");
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
         notesList.appendChild(noteItem);
     }
 
-    // Edit a note's content
+    
     function editNoteContent(noteId) {
         const notes = getNotesFromLocalStorage();
         const noteIndex = notes.findIndex(note => note.id === noteId);
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Delete a note from the DOM and localStorage
+    
     function deleteNoteFromDOM(noteId) {
         const notes = getNotesFromLocalStorage();
         const updatedNotes = notes.filter(note => note.id !== noteId);
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Add a new note
+ 
     newNoteForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -114,20 +114,19 @@ document.addEventListener("DOMContentLoaded", () => {
         newNoteForm.reset();
     });
 
-    // Filter notes by category
+
     filterCategoryInput.addEventListener("change", () => {
         const selectedCategory = filterCategoryInput.value;
         const searchTerm = searchBar.value;
         renderNotes(selectedCategory, searchTerm);
     });
 
-    // Search notes by content
+
     searchBar.addEventListener("input", () => {
         const searchTerm = searchBar.value;
         const selectedCategory = filterCategoryInput.value;
         renderNotes(selectedCategory, searchTerm);
     });
 
-    // Load notes on page load
     renderNotes();
 });
