@@ -15,6 +15,25 @@
     "vite": "^6.1.1"
   },
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "lodash.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Buffaluv07/Web-Page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Buffaluv07/Web-Page/issues"
+  },
+  "homepage": "https://github.com/Buffaluv07/Web-Page#readme",
+  "description": ""
 }
