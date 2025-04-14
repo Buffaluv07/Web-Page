@@ -4,7 +4,7 @@ body {
     background-color: #fbfafd;
     margin: 0;
     padding: 20px;
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -14,24 +14,24 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     font-weight: 400;
-    text-align: center; 
-    margin: 20px 0; 
+    text-align: center;
+    margin: 20px 0;
 }
 
 h1 {
-    font-size: 3em; 
+    font-size: 3em;
     color: #2c3e50;
 }
 
 h2 {
-    font-size: 2em; 
+    font-size: 2em;
     color: #34495e;
 }
 
 h3 {
-    font-size: 1.5em; 
+    font-size: 1.5em;
     color: #2980b9;
 }
 
@@ -41,14 +41,41 @@ ol {
     padding: 0;
     max-width: 300px;
     list-style-type: decimal;
-    counter-reset: list-counter; 
+    counter-reset: list-counter;
 }
 
 ol li {
     position: relative;
     margin: 10px 0;
-    padding-left: 30px; 
-    font-size: 1.1em; 
-    color: #333; 
+    padding-left: 30px;
+    font-size: 1.1em;
+    color: #333;
 }
 
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    ol {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    ol li {
+        font-size: 1em;
+        padding-left: 20px;
+    }
+}

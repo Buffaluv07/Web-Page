@@ -1,4 +1,4 @@
-body { 
+body {
   font-family: 'Arial', sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -27,7 +27,7 @@ h1 {
 .headline-1,
 .headline-2 {
   line-height: 1;
-  font-family: 'Merriweather', serif; 
+  font-family: 'Merriweather', serif;
   display: flex;
 }
 
@@ -45,13 +45,13 @@ h1 {
   color: #7f8c8d;
   font-size: 1.3em;
   max-width: 25em;
-  margin: 300px 0; /* Remove auto centering */
-  text-align: right; /* Align text to the right */
-  padding-bottom: 1.0em;
+  margin: 300px 0;
+  text-align: right;
+  padding-bottom: 1em;
   font-family: 'Georgia', serif;
-  position: absolute; /* Position it absolutely */
-  top: 150px; /* Adjust the vertical position */
-  right: 20px; /* Align it to the right edge of the screen */
+  position: absolute;
+  top: 150px;
+  right: 20px;
 }
 
 h3 {
@@ -62,7 +62,8 @@ h3 {
   color: #2980b9;
 }
 
-nav a, h4 a {
+nav a,
+h4 a {
   display: inline-block;
   color: #343232;
   text-decoration: none;
@@ -78,57 +79,48 @@ nav a, h4 a {
   transition: background 0.3s, color 0.3s;
 }
 
-nav a:hover, h4 a:hover {
+nav a:hover,
+h4 a:hover {
   text-decoration: none;
-  background: #85c1e9; 
+  background: #85c1e9;
   color: #5550d7;
   text-shadow: 0 0 0.5em #7ca1e2;
 }
-nav-bar {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 0 auto 20px auto;
-  max-width: 800px;
-  background-color: #f9f9f9;
-  text-align: center;
-}
+
 .nav-bar {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
-  margin: 20px auto; 
-  max-width: 400px; 
+  margin: 20px auto;
+  max-width: 400px;
   background-color: #f9f9f9;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Legend styling */
 .nav-bar legend {
-  font-size: 1em; /* Make the legend smaller */
+  font-size: 1em;
   font-weight: bold;
   color: #2980b9;
   padding: 0 5px;
   text-align: center;
 }
 
-/* Navigation links styling */
 .nav-links {
   display: flex;
-  justify-content: center; /* Center the buttons */
-  gap: 10px; /* Add spacing between buttons */
+  justify-content: center;
+  gap: 10px;
   margin-top: 10px;
 }
 
 .nav-button {
   display: inline-block;
-  padding: 8px 15px; /* Reduce padding for smaller buttons */
+  padding: 8px 15px;
   background-color: #2980b9;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  font-size: 0.9em; /* Slightly smaller font size */
+  font-size: 0.9em;
   text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -137,21 +129,64 @@ nav-bar {
   background-color: #3498db;
   color: #fff;
 }
+
 h5 {
   font-size: 1.5em;
   color: #2980b9;
   padding: 10px;
 }
-@media (min-width: 768px) {
+
+@media (max-width: 768px) {
   body {
-      font-size: 18px;
+    font-size: 14px;
+    padding: 10px;
   }
 
   h1 {
-      font-size: 32px;
+    font-size: 24px;
+  }
+
+  .headline-1 {
+    font-size: 5em;
+  }
+
+  .headline-2 {
+    font-size: 3em;
+  }
+
+  .subheading {
+    font-size: 1em;
+    top: 100px;
+    right: 10px;
+    max-width: 20em;
+  }
+
+  .nav-bar {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .nav-button {
+    font-size: 0.8em;
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 32px;
   }
 
   .wrapper {
-      max-width: 800px;
+    max-width: 800px;
   }
 }

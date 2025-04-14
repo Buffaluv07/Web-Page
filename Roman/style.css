@@ -1,6 +1,5 @@
-
-body { 
-    font-family: 'Merriweather', serif; 
+body {
+    font-family: 'Merriweather', serif;
     font-size: 20px;
     line-height: 1.5;
     background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
@@ -8,21 +7,11 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-  }
+}
 
 h1 {
     font-weight: 600;
-    font-family: 'Merriweather', serif; 
-}
-
-button:hover {
-    background-color: #323537;
-}
-
-#output {
-    margin-top: 20px;
-    font-size: 40px;
-    color: #050505;
+    font-family: 'Merriweather', serif;
 }
 
 button {
@@ -36,36 +25,83 @@ button {
     font-family: 'Arial', sans-serif;
 }
 
+button:hover {
+    background-color: #323537;
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #050505;
+}
+
 h2 {
     font-size: 10px;
 }
+
 nav {
     position: fixed;
-    top: 0; 
-    left: 0; 
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #f8f9fa; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: px 0;
+    padding: 10px 0;
     gap: 20px;
 }
+
 legend {
-    font-size: 0.7em; /* Reduce the font size */
+    font-size: 0.7em;
     font-weight: bold;
     color: #2980b9;
-    padding: 0; /* Remove unnecessary padding */
     text-align: center;
     width: fit-content;
     margin: 0;
 }
+
 .footer {
     font-family: 'Merriweather', serif;
     font-size: 0.6em;
     border-radius: 5px;
     margin: 10px;
     padding: 300px;
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    #output {
+        font-size: 30px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 0;
+    }
+
+    legend {
+        font-size: 0.8em;
+    }
+
+    .footer {
+        padding: 50px;
+        font-size: 0.8em;
+    }
 }

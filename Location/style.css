@@ -4,7 +4,7 @@ body {
     background-color: #fbfafd;
     margin: 0;
     padding: 20px;
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     text-align: center;
     color: #333;
 }
@@ -42,7 +42,7 @@ h4 {
 
 .column h3 {
     font-size: 1.5em;
-    color: #000; /* Black font color */
+    color: #000;
     margin-bottom: 10px;
     font-family: 'Merriweather', serif;
 }
@@ -78,5 +78,41 @@ nav {
     align-items: center;
     margin-top: 20px;
     gap: 20px;
-    
-  }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+    .columns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .column {
+        padding: 15px;
+    }
+
+    .column h3 {
+        font-size: 1.2em;
+    }
+
+    .column ul li a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

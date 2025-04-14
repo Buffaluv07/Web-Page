@@ -4,7 +4,7 @@ body {
     background-color: #fbfafd;
     margin: 0;
     padding: 20px;
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -14,19 +14,20 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Merriweather', serif; 
+    font-family: 'Merriweather', serif;
     font-weight: 400;
-    text-align: center; 
-    margin: 20px 0; 
+    text-align: center;
+    margin: 20px 0;
 }
 
 h1 {
-    font-size: 3em; 
+    font-size: 4em;
+    font-weight: 600;
     color: #2d4152;
 }
 
 h2 {
-    font-size: 2em; 
+    font-size: 2em;
     color: #34495e;
 }
 
@@ -52,9 +53,9 @@ button:hover {
 }
 
 #countdown {
-    font-size: 5em; /* Make the countdown numbers big */
+    font-size: 5em;
     font-weight: bold;
-    color: #2b29aa; /* Optional: Change the color of the countdown numbers */
+    color: #2b29aa;
 }
 
 nav {
@@ -63,10 +64,9 @@ nav {
     align-items: center;
     margin-top: 20px;
     gap: 20px;
-    
-  }
+}
 
-  .footer {
+.footer {
     font-family: 'Merriweather', serif;
     font-size: 0.8em;
     color: #777;
@@ -75,4 +75,41 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+    #output {
+        font-size: 1.2em;
+    }
+
+    #countdown {
+        font-size: 4em;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer {
+        padding: 50px;
+        font-size: 0.7em;
+    }
+}
