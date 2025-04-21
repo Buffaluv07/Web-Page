@@ -20,6 +20,7 @@ export default defineConfig({
                 Bus: resolve(__dirname, 'Bus/index.html'),
                 Cash: resolve(__dirname, 'Cash/index.html'),
                 notesApp: resolve(__dirname, 'Notes-App/index.html'),
+                creature: resolve(__dirname, 'Creature/index.html'),
             }
         },
     }
