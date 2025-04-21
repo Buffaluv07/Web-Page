@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creature Search</title>
+  <link rel="stylesheet" crossorigin href="/Web-Page/assets/creature-VDRVIDuf.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../Location/index.html">Projects</a></li>
+        </ul>
+    </nav>
+<div class="headline-container">
+        <h1 class="headline-1">My Creature Search App</h1>
+        <h2>Put a creatures name into the search container, and it will give you information about the monster. </h2>
+    </div>
+    <input type="text" id="search-input" required placeholder="Enter creature name or ID" />
+    <button id="search-button" class="search-btn">Search</button>
+
+    <div id="creature-info">
+        <p id="creature-name"></p>
+        <p id="creature-id"></p>
+        <p id="weight"></p>
+        <p id="height"></p>
+        <ul id="types"></ul> 
+        <p id="hp"></p>
+        <p id="attack"></p>
+        <p id="defense"></p>
+        <p id="special-attack"></p>
+        <p id="special-defense"></p>
+        <p id="speed"></p>
+    </div>
+
+    <script>
+        const creatures = {
+            Pyrolynx: {
+                id: 1,
+                name: 'PYROLYNX', 
+                weight: 42,
+                height: 32,
+                types: ['FIRE'],
+                stats: { hp: 65, attack: 80, defense: 50, specialAttack: 90, specialDefense: 55, speed: 100 }
+            },
+            Aquoroc: {
+                id: 2,
+                name: 'AQUOROC', 
+                weight: 220,
+                height: 53,
+                types: ['WATER', 'ROCK'],
+                stats: { hp: 85, attack: 90, defense: 120, specialAttack: 60, specialDefense: 70, speed: 40 }
+            }
+        };
+
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchInput = document.getElementById('search-input').value.trim();
+            const creatureName = document.getElementById('creature-name');
+            const creatureId = document.getElementById('creature-id');
+            const weight = document.getElementById('weight');
+            const height = document.getElementById('height');
+            const types = document.getElementById('types');
+            const hp = document.getElementById('hp');
+            const attack = document.getElementById('attack');
+            const defense = document.getElementById('defense');
+            const specialAttack = document.getElementById('special-attack');
+            const specialDefense = document.getElementById('special-defense');
+            const speed = document.getElementById('speed');
+
+         
+            types.innerHTML = '';
+
+            
+            if (searchInput.toLowerCase() === 'red') {
+                alert('Creature not found');
+                return;
+            }
+let creature;
+
+if (isNaN(searchInput)) {
+
+    creature = creatures[Object.keys(creatures).find(key => key.toLowerCase() === searchInput.toLowerCase())];
+} else {
+ 
+    const id = parseInt(searchInput, 10);
+    creature = Object.values(creatures).find(c => c.id === id);
+}
+
+if (!creature) {
+    alert('Creature not found');
+    return;
+}
+
+     
+            creatureName.textContent = creature.name; 
+            creatureId.textContent = `#${creature.id}`;
+            weight.textContent = `Weight: ${creature.weight}`;
+            height.textContent = `Height: ${creature.height}`;
+            hp.textContent = creature.stats.hp;
+            attack.textContent = creature.stats.attack;
+            defense.textContent = creature.stats.defense;
+            specialAttack.textContent = creature.stats.specialAttack;
+            specialDefense.textContent = creature.stats.specialDefense;
+            speed.textContent = creature.stats.speed;
+
+      
+            creature.types.forEach(type => {
+                const typeElement = document.createElement('li');
+                typeElement.textContent = type.trim(); 
+                types.appendChild(typeElement); 
+            });
+
+      
+            console.log('Creature Types:', creature.types);
+            console.log('Types Element Children:', types.children.length);
+        });
+        document.getElementById('search-button').addEventListener('click', () => {
+    setTimeout(() => {
+
+    }, 0);
+});
+
+document.getElementById('search-button').addEventListener('click', () => {
+    const searchInput = document.getElementById('search-input').value.trim();
+    console.log('Search input clicked:', searchInput); 
+    
+    const types = document.getElementById('types');
+    types.innerHTML = ''; 
+
+    let creature;
+    if (isNaN(searchInput)) {
+        creature = creatures[Object.keys(creatures).find(key => key.toLowerCase() === searchInput.toLowerCase())];
+    } else {
+        const id = parseInt(searchInput, 10);
+        creature = Object.values(creatures).find(c => c.id === id);
+    }
+
+    if (!creature) {
+        alert('Creature not found');
+        return;
+    }
+
+
+    creature.types.forEach(type => {
+        const typeElement = document.createElement('li');
+        typeElement.textContent = type.trim();
+        types.appendChild(typeElement);
+    });
+
+    console.log('Creature Types:', creature.types);
+    console.log('Types Element Children:', types.children.length);
+});
+    </script>
+
+<footer>
+    <p>Made by Zoe Kornhauser ©2025 . All rights reserved.</p>
+</footer>
+    <script src="../Creature/script.js"></script>
+</body>
+</html>
