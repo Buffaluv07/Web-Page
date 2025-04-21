@@ -1,0 +1,113 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    align-items: baseline;
+    background-color:rgb(170, 200, 237);
+    
+}
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    font-display: swap;
+    text-align: center;
+    margin: 90px 0 40px;
+    color: rgb(42, 42, 57);
+}
+h2 {
+    font-size: 1.5rem;
+    color: rgb(27, 27, 98);
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 400;
+    font-display: swap; 
+}
+input[type="text"],
+input[type="number"] {
+    width: 30%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+    transition: border-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+button {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #4c89af, #3a42dc);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #7a72e2, #94949b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    width: 100%;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px;
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #4c89af, #3a42dc);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li a:hover {
+    background: linear-gradient(135deg, #7a72e2, #94949b);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav ul li a:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    font-size: 0.6rem;
+    color: #120e0e;
+    text-align: center;
+    padding: 10px 15px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
