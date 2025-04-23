@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Validator</title>
+  <link rel="stylesheet" crossorigin href="/Web-Page/assets/telephone-CpyoLMzm.css">
+</head>
+<body>
+    <fieldset class="nav">
+        <legend>Navigation</legend>
+        <a href="../index.html">Home</a><br>
+        <a href="../Location/index.html">Projects Page</a>
+    </fieldset>
+    <div class="headline-container">
+        <h1 class="headline-1">Phone Number Validator</h1>
+        <h2 class="headline-2">Check if a phone number is valid</h2>
+    </div>
+    <input type="text" id="user-input" placeholder="Enter phone number">
+    <button id="check-btn" class="check-btn">Check</button>
+    <button id="clear-btn" class="clear-btn">Clear</button>
+    <div id="results-div"></div>
+
+    <script>
+        const userInput = document.getElementById('user-input');
+        const checkBtn = document.getElementById('check-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const resultsDiv = document.getElementById('results-div');
+
+        const validUSNumberRegex = /^(1\s?)?(\(\d{3}\)|\d{3})([\s-]?)\d{3}([\s-]?)\d{4}$/;
+
+        checkBtn.addEventListener('click', () => {
+            const inputValue = userInput.value.trim();
+
+            if (!inputValue) {
+                alert('Please provide a phone number');
+                return;
+            }
+
+            if (validUSNumberRegex.test(inputValue)) {
+                resultsDiv.textContent = `Valid US number: ${inputValue}`;
+            } else {
+                resultsDiv.textContent = `Invalid US number: ${inputValue}`;
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+        userInput.value = ''; 
+        resultsDiv.textContent = ''; 
+    });
+    </script>
+    <footer>
+        <p>Made by Zoe Kornhauser ©2025 with help from FreeCodeCamp <br> All rights reserved.</p>
+    </footer>
+</body>
+</html>
