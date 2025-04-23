@@ -63,18 +63,17 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px #000000;
-}
-
 h2 {
-    font-size: 2rem;
-    color: #465080;
+    font-size: 3rem;
+    color: #05060a;
     text-align: center;
     margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 1.2rem;
+    color: #0a0606;
+    margin-bottom: 0.5rem;
 }
 
 #notes-section {
@@ -107,6 +106,7 @@ h2 {
     flex-grow: 1;
     margin-right: 10px;
     color: #0a0606;
+    font-size: 1.1rem;
 }
 
 .note-date {
@@ -126,8 +126,9 @@ h2 {
 }
 
 .note-item button.edit-note {
-    background-color: #99bef7;
-    color: rgb(17, 12, 12);
+    border: #4c6de4;
+    border: 2px solid #4c6de4;
+    color: rgb(8, 6, 6);
     transition: background-color 0.3s ease;
 }
 
@@ -148,7 +149,6 @@ h2 {
 #new-note-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     margin-bottom: 20px;
     align-items: center;
 }
@@ -159,20 +159,21 @@ h2 {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1rem;
+    font-size: 1.7rem;
     resize: none;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #new-note-form button {
     padding: 10px;
-    background-color: #384a59;
+    background-color: #1bac1d;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.7rem;
     transition: background-color 0.3s ease;
-    width: 150px;
+    width: 190px;
     font-family: 'Courier New', Courier, monospace;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -193,32 +194,32 @@ h2 {
     font-size: 0.9rem;
 }
 
-#new-note-form select, #filter-container select {
+select {
     margin: 10px 0;
     padding: 5px;
     font-size: 1rem;
+    border: 1px solid #140808;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #filter-container {
     margin: 20px 0;
-    color:#000000;
-}
-.note-category {
-    font-size: 0.9rem;
     color: #000000;
-    margin-left: 10px;
 }
+
 .note-category-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
     color: #000000;
     margin-right: 5px;
 }
 
 #search-container {
-    margin: 10px 0; 
+    margin: 10px 0;
     text-align: center;
 }
-
 
 #search-bar {
     width: 80%;
@@ -226,7 +227,7 @@ h2 {
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 6px 0 0 6px; /* Rounded corners on the left */
+    border-radius: 6px 0 0 6px;
     background-color: #f9f9f9;
     box-shadow: none;
     outline: none;
@@ -266,26 +267,25 @@ h2 {
     padding: 10px;
     font-size: 1rem;
     font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New';
     color: #0f0e0e;
-    background-color: #a2a7ac;
+    background-color: #f6f7f8;
     border: 1px solid #18191c;
     border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-#filter-category:hover {
-    background-color: #ffffff;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-}
-
 #filter-category:focus {
     outline: none;
-    border-color: #003f7f;
+    border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+#filter-category:hover {
+    background-color: #b09898;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
 
 ul {
     list-style-type: none;
@@ -302,39 +302,44 @@ button {
     padding: 0 1rem;
 }
 
-
-
 .note-category {
     font-weight: bold;
     padding: 2px 6px;
     border-radius: 4px;
 }
 
-
-.note-category[data-category="Work"] {
+.note-category[data-category="Homework"] {
     color: #0c0707;
-    background-color: #3994f7; 
     font-family: 'Courier New';
+    border: 1px solid #3994f7;
+    border-width: 5px;
 }
 
 .note-category[data-category="Personal"] {
     color: #090808;
-    background-color: #28a745; 
-    font-family: 'Courier New', Courier, monospace;
-}
-
-.note-category[data-category="Ideas"] {
-    color: #060505;
-    background-color: #ffc107; 
+    border: 1px solid #7a2eb1;
+    border-width: 5px;
     font-family: 'Courier New';
 }
 
-.note-category[data-category="Urgent"] {
-    color: #090808;
-    background-color: #dc3545; 
-    font-family: 'Courier New', Courier, monospace;
+.note-category[data-category="Work"] {
+    color: #060505;
+    border: 1px solid #ffc107;
+    border-width: 5px;
+    font-family: 'Courier New';
 }
 
+.note-category[data-category="Important"] {
+    color: #090808;
+    border: 1px solid #dc3545;
+    border-width: 5px;
+    font-family: 'Courier New';
+}
+
+.hover-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
 
 .sr-only {
     position: absolute;
@@ -348,72 +353,23 @@ button {
     border: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 768px) {
-    header {
-        padding: 0.5rem;
-    }
-
-    .header-logo svg {
-        width: 40px;
-        height: 40px;
-    }
-
     header nav ul {
         flex-direction: column;
         gap: 0.5rem;
     }
 
-    header nav ul li a {
-        padding: 0.5rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
+    h1, h2 {
         font-size: 1.5rem;
     }
 
-    main {
+    main, #note-content {
         padding: 1rem;
-    }
-
-    #note-content {
-        font-size: 0.9rem;
-        padding: 8px;
     }
 
     #new-note-form button {
         font-size: 0.9rem;
         padding: 8px;
         width: 100%;
-    }
-
-    .note-item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 8px;
-    }
-
-    .note-item .note-content {
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
-
-    .note-item button {
-        font-size: 0.8rem;
-        padding: 4px 8px;
     }
 }

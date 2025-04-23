@@ -5,18 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const noteCategoryInput = document.getElementById("note-category");
     const filterCategoryInput = document.getElementById("filter-category");
     const searchBar = document.getElementById("search-bar");
-
+    let hidePersonalNotes = false; 
 
     function getNotesFromLocalStorage() {
         return JSON.parse(localStorage.getItem("notes")) || [];
     }
 
- 
     function saveNotesToLocalStorage(notes) {
         localStorage.setItem("notes", JSON.stringify(notes));
     }
 
-   
     function renderNotes(filter = "All", searchTerm = "") {
         const notes = getNotesFromLocalStorage();
         notesList.innerHTML = "";
@@ -25,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const filteredNotes = notes.filter(note => {
             const matchesCategory = filter === "All" || note.category === filter;
             const matchesSearch = note.content.toLowerCase().includes(searchTerm.toLowerCase());
-            return matchesCategory && matchesSearch;
+            const isVisible = !(hidePersonalNotes && note.category === "Personal"); 
+            return matchesCategory && matchesSearch && isVisible;
         });
 
         filteredNotes.forEach(note => {
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-  
     function addNoteToDOM(note) {
         const noteItem = document.createElement("li");
         noteItem.classList.add("note-item");
@@ -59,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
         notesList.appendChild(noteItem);
     }
 
-    
     function editNoteContent(noteId) {
         const notes = getNotesFromLocalStorage();
         const noteIndex = notes.findIndex(note => note.id === noteId);
@@ -76,7 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    
     function deleteNoteFromDOM(noteId) {
         const notes = getNotesFromLocalStorage();
         const updatedNotes = notes.filter(note => note.id !== noteId);
@@ -88,7 +84,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
- 
+
+const togglePersonalNotesButton = document.createElement("button");
+togglePersonalNotesButton.textContent = "Hide Personal Notes";
+togglePersonalNotesButton.style.margin = "10px";
+togglePersonalNotesButton.addEventListener("click", () => {
+    hidePersonalNotes = !hidePersonalNotes;
+    togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes";
+    renderNotes(filterCategoryInput.value, searchBar.value);
+});
+
+
+notesList.parentNode.insertBefore(togglePersonalNotesButton, notesList);
+
     newNoteForm.addEventListener("submit", (event) => {
         event.preventDefault();
 
@@ -115,13 +123,11 @@ document.addEventListener("DOMContentLoaded", () => {
         newNoteForm.reset();
     });
 
-
     filterCategoryInput.addEventListener("change", () => {
         const selectedCategory = filterCategoryInput.value;
         const searchTerm = searchBar.value;
         renderNotes(selectedCategory, searchTerm);
     });
-
 
     searchBar.addEventListener("input", () => {
         const searchTerm = searchBar.value;
