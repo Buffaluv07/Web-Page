@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const noteCategoryInput = document.getElementById("note-category");
     const filterCategoryInput = document.getElementById("filter-category");
     const searchBar = document.getElementById("search-bar");
-    let hidePersonalNotes = false; 
+
+
+    let hidePersonalNotes = JSON.parse(localStorage.getItem("hidePersonalNotes")) || false;
 
     function getNotesFromLocalStorage() {
         return JSON.parse(localStorage.getItem("notes")) || [];
@@ -13,6 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function saveNotesToLocalStorage(notes) {
         localStorage.setItem("notes", JSON.stringify(notes));
+    }
+
+    function saveHidePersonalNotesState() {
+        localStorage.setItem("hidePersonalNotes", JSON.stringify(hidePersonalNotes));
     }
 
     function renderNotes(filter = "All", searchTerm = "") {
@@ -84,18 +90,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // didn't know how to do this part....
+    const togglePersonalNotesButton = document.createElement("button");
+    togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes"; // Set initial state
+    togglePersonalNotesButton.style.margin = "10px";
+    togglePersonalNotesButton.addEventListener("click", () => {
+        hidePersonalNotes = !hidePersonalNotes;
+        saveHidePersonalNotesState(); 
+        togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes";
+        renderNotes(filterCategoryInput.value, searchBar.value);
+    });
 
-const togglePersonalNotesButton = document.createElement("button");
-togglePersonalNotesButton.textContent = "Hide Personal Notes";
-togglePersonalNotesButton.style.margin = "10px";
-togglePersonalNotesButton.addEventListener("click", () => {
-    hidePersonalNotes = !hidePersonalNotes;
-    togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes";
-    renderNotes(filterCategoryInput.value, searchBar.value);
-});
 
-
-notesList.parentNode.insertBefore(togglePersonalNotesButton, notesList);
+    notesList.parentNode.insertBefore(togglePersonalNotesButton, notesList);
 
     newNoteForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -135,5 +142,6 @@ notesList.parentNode.insertBefore(togglePersonalNotesButton, notesList);
         renderNotes(selectedCategory, searchTerm);
     });
 
+  
     renderNotes();
 });
