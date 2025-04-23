@@ -204,10 +204,7 @@ select {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#filter-container {
-    margin: 20px 0;
-    color: #000000;
-}
+
 
 .note-category-label {
     font-size: 1rem;
@@ -264,8 +261,7 @@ select {
 }
 
 #filter-category {
-    padding: 10px;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: bold;
     font-family: 'Courier New';
     color: #0f0e0e;
@@ -283,7 +279,7 @@ select {
 }
 
 #filter-category:hover {
-    background-color: #b09898;
+    background-color: #ded7d7;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
