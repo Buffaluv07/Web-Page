@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
-  <script type="module" crossorigin src="/Web-Page/assets/notesApp-CkEC8dA4.js"></script>
+  <script type="module" crossorigin src="/Web-Page/assets/notesApp-BPjp4_qm.js"></script>
   <link rel="modulepreload" crossorigin href="/Web-Page/assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="stylesheet" crossorigin href="/Web-Page/assets/notesApp-CUP-3F7Q.css">
+  <link rel="stylesheet" crossorigin href="/Web-Page/assets/notesApp-DBbvcts0.css">
 </head>
 <body>
     <div class="container">
@@ -26,40 +26,41 @@
                 <button id="search-btn" aria-label="Search notes">Search</button>
             </div>
 
-            <h2 id="notes-heading">Notes</h2>
+            <h2 id="notes-heading">Notepad:</h2>
             <form id="new-note-form" aria-labelledby="form-heading">
-            <label for="note-content">Note Content:</label>
                 <textarea id="note-content" placeholder="Write your note here..." required aria-required="true"></textarea>
-                <label for="note-category">Category:</label>
-                <select id="note-category" aria-required="true">
-                    <option value="Work">Work</option>
-                    <option value="Personal">Personal</option>
-                    <option value="Ideas">Ideas</option>
-                    <option value="Urgent">Urgent</option>
-                </select>
-                <button type="submit" aria-label="Add Note">Add Note</button>
+                <div id="note-category-container">
+                    <label for="note-category">Select Note Category:</label>
+                    <select id="note-category" aria-required="true">
+                        <option value="Homework">Homework</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work Notes</option>
+                        <option value="Important">Important</option>
+                    </select>
+                </div>
+                <button type="submit" aria-label="Add Note" class="hover-effect">Add Note</button>
             </form>
 
             <div id="filter-container">
-                <label for="filter-category">Filter by Category:</label>
+                <label for="filter-category">Filter Notes by Category:</label>
                 <select id="filter-category" aria-label="Filter notes by category">
                     <option value="All">All</option>
-                    <option value="Work">Work</option>
+                    <option value="Homework">Homework</option>
                     <option value="Personal">Personal</option>
-                    <option value="Ideas">Ideas</option>
-                    <option value="Urgent">Urgent</option>
+                    <option value="Work">Work Notes</option>
+                    <option value="Important">Important</option>
                 </select>
             </div>
 
             <section aria-labelledby="notes-heading">
                 <ul id="notes-list" role="list" aria-live="polite">
-                    <!-- Notes will be dynamically added here -->
+
                 </ul>
             </section>
         </main>
 
         <footer class="footer">
-            <p>Made by Zoe Kornhauser with help from YouTube Videos & Class</p>
+            <p>Made by Zoe Kornhauser with help from YouTube Videos, Class Textbooks</p>
             <p>© 2025</p>
             <p>All rights reserved</p>
         </footer>
