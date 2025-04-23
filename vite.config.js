@@ -21,6 +21,8 @@ export default defineConfig({
                 Cash: resolve(__dirname, 'Cash/index.html'),
                 notesApp: resolve(__dirname, 'Notes-App/index.html'),
                 creature: resolve(__dirname, 'Creature/index.html'),
+                notesAppServer: resolve(__dirname, 'Notes-App/server.js'),
+                telephone: resolve(__dirname, 'telephone/index.html'),
             }
         },
     }
