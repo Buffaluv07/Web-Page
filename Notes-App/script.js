@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // didn't know how to do this part....
     const togglePersonalNotesButton = document.createElement("button");
-    togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes"; // Set initial state
+    togglePersonalNotesButton.textContent = hidePersonalNotes ? "Show Personal Notes" : "Hide Personal Notes"; 
     togglePersonalNotesButton.style.margin = "10px";
     togglePersonalNotesButton.addEventListener("click", () => {
         hidePersonalNotes = !hidePersonalNotes;
